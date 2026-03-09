@@ -335,7 +335,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 pt-16">
         <div className="max-w-xs">
           <div className="flex items-center gap-2 text-white font-bold text-2xl tracking-tight mb-4">
-            <BrainCircuit className="text-brand-green w-8 h-8" />
+            <BookOpenCheck className="text-brand-green w-8 h-8" />
             RedaLine<span className="text-brand-green">AI</span>
           </div>
           <p className="text-sm text-white/80 leading-relaxed mb-6">
@@ -365,7 +365,7 @@ const Footer = () => {
           <div className="col-span-2 lg:col-span-1">
             <div className="bg-brand-dark p-6 rounded-2xl border border-white/10">
               <h4 className="font-bold text-white mb-2">Contato</h4>
-              <p className="text-sm text-white/70 mb-4">contato@Redaline.ai<br />Mato Grosso, Brasil</p>
+              <p className="text-sm text-white/70 mb-4">redaline2m@gmail.com<br />Mato Grosso, Brasil</p>
               <button className="btn-accent text-sm w-full py-2">Falar Conosco</button>
             </div>
           </div>
