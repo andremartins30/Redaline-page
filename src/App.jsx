@@ -22,9 +22,11 @@ const Navbar = () => {
             <a href="#programa" className="hover:text-brand-green transition-colors">O Programa</a>
             <a href="#pricing" className="hover:text-brand-green transition-colors">Planos</a>
           </div>
-          <a href="#pricing" className="btn-primary text-sm py-2 px-6">
+
+          <a href="https://portal.redaline.app/" className="btn-primary text-sm py-2 px-6">
             Acessar a plataforma
           </a>
+
         </div>
       </div>
     </nav>
@@ -363,7 +365,7 @@ const Footer = () => {
           <div className="col-span-2 lg:col-span-1">
             <div className="bg-brand-dark p-6 rounded-2xl border border-white/10">
               <h4 className="font-bold text-white mb-2">Contato</h4>
-              <p className="text-sm text-white/70 mb-4">contato@RedaLine.ai<br />São Paulo, Brasil</p>
+              <p className="text-sm text-white/70 mb-4">contato@Redaline.ai<br />Mato Grosso, Brasil</p>
               <button className="btn-accent text-sm w-full py-2">Falar Conosco</button>
             </div>
           </div>
