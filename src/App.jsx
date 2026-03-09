@@ -44,7 +44,7 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
             Sua evolução <br />
             na escrita <br />
-            <span className="text-brand-green">começa aqui.</span>
+            <span className="text-brand-green">começa aqui..</span>
           </h1>
           <p className="text-lg md:text-xl text-brand-light/80 mb-8 leading-relaxed font-light max-w-lg">
             Envie sua redação e receba em segundos uma análise completa nas 5 competências do ENEM.
