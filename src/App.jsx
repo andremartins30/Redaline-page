@@ -1,33 +1,45 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CheckCircle2, ArrowRight, Layers, BrainCircuit, BookOpenCheck, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
+import { Menu, X, CheckCircle2, ArrowRight, Layers, BrainCircuit, BookOpenCheck, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
+    <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-4 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Lado Esquerdo - Logo */}
-        <div className="flex items-center gap-2 text-white font-bold text-2xl tracking-tight">
-          <BookOpenCheck className="text-brand-green w-8 h-8" />
+        <div className="flex items-center gap-2 text-white font-bold text-xl md:text-2xl tracking-tight">
+          <BookOpenCheck className="text-brand-green w-6 h-6 md:w-8 md:h-8" />
           RedaLine<span className="text-brand-green">AI</span>
         </div>
 
         {/* Lado Direito - Links e Botão */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-8 text-brand-light font-medium text-sm">
             <a href="#proposta" className="hover:text-brand-green transition-colors">Proposta</a>
             <a href="#programa" className="hover:text-brand-green transition-colors">O Programa</a>
             <a href="#pricing" className="hover:text-brand-green transition-colors">Planos</a>
           </div>
 
-          <a href="https://portal.redaline.app/" className="btn-primary text-sm py-2 px-6">
-            Acessar a plataforma
+          <a href="https://portal.redaline.app/" className="btn-primary text-xs md:text-sm py-2 px-4 md:px-6 hover:!bg-brand-green hover:!text-brand-dark hover:!shadow-brand-green/40">
+            Acessar<span className="hidden sm:inline">&nbsp;a plataforma</span>
           </a>
 
+          <button className="md:hidden text-white hover:text-brand-green transition-colors" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+      </div>
+
+      {/* Menu Mobile */}
+      <div className={`md:hidden absolute top-full left-0 w-full bg-brand-dark border-b border-white/10 flex flex-col items-center py-4 gap-4 shadow-xl overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-60 border-t border-white/10 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
+        <a href="#proposta" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Proposta</a>
+        <a href="#programa" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">O Programa</a>
+        <a href="#pricing" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Planos</a>
       </div>
     </nav>
   );
@@ -35,7 +47,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="relative pt-40 pb-56 px-6 bg-brand-dark text-white overflow-hidden">
+    <section className="relative pt-32 pb-32 md:pt-40 md:pb-56 px-6 bg-brand-dark text-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-blue/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -43,7 +55,7 @@ const Hero = () => {
           <div className="inline-block px-3 py-1 mb-6 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
             Corretor Inteligente de Redações
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
             Sua evolução <br />
             na escrita <br />
             <span className="text-brand-green">começa aqui..</span>
@@ -80,8 +92,8 @@ const Hero = () => {
 
 const FloatingStatsCard = () => {
   return (
-    <div className="max-w-6xl mx-auto px-6 relative z-20 -mt-28 mb-24">
-      <div className="bg-brand-green rounded-[2rem] p-8 md:p-12 shadow-card flex flex-col md:flex-row items-center justify-between gap-12">
+    <div className="max-w-6xl mx-auto px-6 relative z-20 -mt-16 md:-mt-28 mb-16 md:mb-24">
+      <div className="bg-brand-green rounded-[2rem] p-8 md:p-12 shadow-card flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
         <div className="flex-1">
           <div className="flex items-center gap-4 mb-4">
             <div className="bg-brand-dark text-white p-3 rounded-2xl">
@@ -111,14 +123,14 @@ const FloatingStatsCard = () => {
 
 const ProposalSection = () => {
   return (
-    <section id="proposta" className="py-20 px-6">
+    <section id="proposta" className="py-16 md:py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-light text-brand-dark mb-2">Conheça a nossa proposta para</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-brand-dark">impulsionar a aprendizagem<span className="text-brand-gray font-light"> na sua rotina.</span></h3>
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-2xl md:text-4xl font-light text-brand-dark mb-2">Conheça a nossa proposta para</h2>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-dark">impulsionar a aprendizagem<span className="text-brand-gray font-light block md:inline"> na sua rotina.</span></h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-12">
             <div className="flex gap-6">
               <div className="text-brand-blue shrink-0">
@@ -200,7 +212,7 @@ const ProposalSection = () => {
 
 const TargetAudience = () => {
   return (
-    <section id="programa" className="py-32 px-6 bg-brand-dark text-white pt-24 mt-20">
+    <section id="programa" className="py-20 md:py-32 px-6 bg-brand-dark text-white pt-16 md:pt-24 mt-12 md:mt-20">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Um pouco mais sobre nosso programa</h2>
       </div>
@@ -281,10 +293,10 @@ const CTAStrip = () => {
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-32 px-6 bg-brand-light">
+    <section id="pricing" className="py-20 md:py-32 px-6 bg-brand-light">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-brand-dark mb-4">Planos Para Sua Aprovação</h2>
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Planos Para Sua Aprovação</h2>
           <p className="text-brand-gray text-lg max-w-2xl mx-auto">Escolha o plano ideal para acelerar sua preparação. Correção profissional ao seu alcance.</p>
         </div>
 
@@ -300,7 +312,7 @@ const Pricing = () => {
               <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0" /> Nota estimada formato ENEM</li>
               <li className="flex gap-3 items-center opacity-50"><CheckCircle2 className="w-5 h-5 shrink-0" /> Sem limite de acessos ao painel</li>
             </ul>
-            <button className="w-full py-4 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-colors rounded-xl font-bold">
+            <button className="w-full py-4 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30 rounded-xl font-bold">
               Assinar Essencial
             </button>
           </div>
@@ -319,7 +331,7 @@ const Pricing = () => {
               <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Gráficos de evolução diária</li>
               <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Sugestões de reescrita da IA</li>
             </ul>
-            <button className="w-full py-4 bg-brand-green text-brand-dark hover:bg-emerald-400 transition-colors rounded-xl font-bold shadow-lg shadow-brand-green/20">
+            <button className="w-full py-4 bg-brand-green text-brand-dark hover:bg-emerald-400 transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-green/40 rounded-xl font-bold shadow-lg shadow-brand-green/20">
               Assinar Intensivo
             </button>
           </div>
@@ -331,9 +343,9 @@ const Pricing = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-blue text-white pt-24 pb-10 px-6 mt-[-4rem] relative z-0">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 pt-16">
-        <div className="max-w-xs">
+    <footer className="bg-brand-blue text-white pt-20 md:pt-24 pb-10 px-6 mt-[-2rem] md:mt-[-4rem] relative z-0">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 pt-12 md:pt-16">
+        <div className="max-w-sm w-full">
           <div className="flex items-center gap-2 text-white font-bold text-2xl tracking-tight mb-4">
             <BookOpenCheck className="text-brand-green w-8 h-8" />
             RedaLine<span className="text-brand-green">AI</span>
@@ -343,7 +355,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24 w-full md:w-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-24 w-full md:w-auto">
           <div>
             <h4 className="font-bold text-white mb-6">Plataforma</h4>
             <ul className="space-y-4 text-sm text-white/80">
@@ -362,7 +374,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-brand-green transition-colors">Contato Institucional</a></li>
             </ul>
           </div>
-          <div className="col-span-2 lg:col-span-1">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="bg-brand-dark p-6 rounded-2xl border border-white/10">
               <h4 className="font-bold text-white mb-2">Contato</h4>
               <p className="text-sm text-white/70 mb-4">redaline2m@gmail.com<br />Mato Grosso, Brasil</p>

@@ -16,10 +16,10 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center bg-brand-blue text-white font-semibold py-3 px-6 rounded-lg transition-colors hover:bg-blue-700;
+    @apply inline-flex items-center justify-center bg-brand-blue text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30;
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center bg-brand-green text-brand-dark font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105 shadow-lg shadow-brand-green/20;
+    @apply inline-flex items-center justify-center bg-brand-green text-brand-dark font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-[#00cc6a] shadow-lg shadow-brand-green/20 hover:shadow-brand-green/40;
   }
 }
