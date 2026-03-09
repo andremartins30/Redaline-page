@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-light text-brand-dark font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-green to-emerald-400;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-brand-blue text-white font-semibold py-3 px-6 rounded-lg transition-colors hover:bg-blue-700;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center bg-brand-green text-brand-dark font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105 shadow-lg shadow-brand-green/20;
+  }
+}
