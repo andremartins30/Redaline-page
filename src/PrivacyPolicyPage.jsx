@@ -70,7 +70,7 @@ const policySections = [
         title: '10. Atualizacoes e contato',
         paragraphs: [
             'Esta politica pode ser atualizada periodicamente para refletir evolucoes do produto, exigencias legais e melhorias operacionais. Recomendamos revisao regular desta pagina.',
-            'Para duvidas, exercicio de direitos ou solicitacoes relacionadas a privacidade, entre em contato pelo e-mail redaline2m@gmail.com.',
+            'Para duvidas, exercicio de direitos ou solicitacoes relacionadas a privacidade, entre em contato pelo e-mail contato@redaline.app.',
         ],
     },
 ];

@@ -425,16 +425,16 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-white mb-6">Ajuda</h4>
             <ul className="space-y-4 text-sm text-white/80">
-              <li><a href="mailto:redaline2m@gmail.com" className="hover:text-brand-green transition-colors">Central de Ajuda</a></li>
+              <li><a href="mailto:contato@redaline.app" className="hover:text-brand-green transition-colors">Central de Ajuda</a></li>
               <li><a href="/politica-de-privacidade.html" className="hover:text-brand-green transition-colors">Política de Privacidade</a></li>
-              <li><a href="mailto:redaline2m@gmail.com?subject=Contato%20Institucional%20RedaLine%20AI" className="hover:text-brand-green transition-colors">Contato Institucional</a></li>
+              <li><a href="mailto:contato@redaline.app?subject=Contato%20Institucional%20RedaLine%20AI" className="hover:text-brand-green transition-colors">Contato Institucional</a></li>
             </ul>
           </div>
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="bg-brand-dark p-6 rounded-2xl border border-white/10">
               <h4 className="font-bold text-white mb-2">Contato</h4>
-              <p className="text-sm text-white/70 mb-4">redaline2m@gmail.com<br />Mato Grosso, Brasil</p>
-              <a href="mailto:redaline2m@gmail.com" className="btn-accent text-sm w-full py-2">Falar Conosco</a>
+              <p className="text-sm text-white/70 mb-4">contato@redaline.app<br />Mato Grosso, Brasil</p>
+              <a href="mailto:contato@redaline.app" className="btn-accent text-sm w-full py-2">Falar Conosco</a>
             </div>
           </div>
         </div>
