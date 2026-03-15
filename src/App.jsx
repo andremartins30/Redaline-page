@@ -1,9 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Menu, X, CheckCircle2, ArrowRight, Layers, BrainCircuit, BookOpenCheck, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, CheckCircle2, Layers, BookOpenCheck, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
+const platformScreens = [
+  {
+    src: '/Screenshot_51.png',
+    alt: 'Tela do corretor de redações com editor e nota geral',
+    title: 'Correção em segundos',
+    description: 'Editor para digitar ou enviar imagem, contagem de palavras e nota geral com apontamentos automáticos.',
+  },
+  {
+    src: '/Screenshot_53.png',
+    alt: 'Tela com apontamentos detalhados e competências da redação',
+    title: 'Apontamentos por competência',
+    description: 'Visualização de trechos destacados, filtros por gravidade e painel lateral com as 5 competências do ENEM.',
+  },
+  {
+    src: '/Screenshot_54.png',
+    alt: 'Tela de feedback qualitativo da redação',
+    title: 'Feedback orientado',
+    description: 'Sugestões práticas de reescrita, exemplos corrigidos e análise qualitativa para acelerar a evolução do aluno.',
+  },
+  {
+    src: '/Screenshot_55.png',
+    alt: 'Tela de sugestões de melhoria da redação',
+    title: 'Sugestões acionáveis',
+    description: 'Lista objetiva de melhorias com prioridade, foco em repertório, argumentação e proposta de intervenção.',
+  },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,13 +37,14 @@ const Navbar = () => {
         {/* Lado Esquerdo - Logo */}
         <div className="flex items-center gap-2 text-white font-bold text-xl md:text-2xl tracking-tight">
           <BookOpenCheck className="text-brand-green w-6 h-6 md:w-8 md:h-8" />
-          RedaLine<span className="text-brand-green">AI</span>
+          RedaLine<span className="text-brand-green"></span>
         </div>
 
         {/* Lado Direito - Links e Botão */}
         <div className="flex items-center gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-8 text-brand-light font-medium text-sm">
             <a href="#proposta" className="hover:text-brand-green transition-colors">Proposta</a>
+            <a href="#demo" className="hover:text-brand-green transition-colors">Demonstração</a>
             <a href="#programa" className="hover:text-brand-green transition-colors">O Programa</a>
             <a href="#pricing" className="hover:text-brand-green transition-colors">Planos</a>
           </div>
@@ -38,6 +62,7 @@ const Navbar = () => {
       {/* Menu Mobile */}
       <div className={`md:hidden absolute top-full left-0 w-full bg-brand-dark border-b border-white/10 flex flex-col items-center py-4 gap-4 shadow-xl overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-60 border-t border-white/10 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
         <a href="#proposta" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Proposta</a>
+        <a href="#demo" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Demonstração</a>
         <a href="#programa" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">O Programa</a>
         <a href="#pricing" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Planos</a>
       </div>
@@ -108,7 +133,7 @@ const FloatingStatsCard = () => {
         </div>
         <div className="flex flex-col sm:flex-row gap-6">
           <div className="bg-white/40 p-5 rounded-2xl text-brand-dark min-w-[160px]">
-            <div className="text-3xl font-bold mb-1">+1,0<span className="text-lg">mi</span></div>
+            <div className="text-3xl font-bold mb-1">+1000<span className="text-lg"></span></div>
             <div className="text-xs font-semibold uppercase opacity-70">Redações<br />Avaliadas</div>
           </div>
           <div className="bg-white/40 p-5 rounded-2xl text-brand-dark min-w-[160px]">
@@ -159,8 +184,7 @@ const ProposalSection = () => {
                 <p className="text-brand-gray text-sm leading-relaxed">Acompanhamento em tempo real. Menos tempo gasto na espera por correções, mais tempo praticando técnicas de redação.</p>
               </div>
             </div>
-
-            <button className="btn-primary mt-4">Quero saber mais!</button>
+            <a href="#demo" className="btn-primary mt-4">Ver a plataforma</a>
           </div>
 
           <div className="relative">
@@ -204,6 +228,38 @@ const ProposalSection = () => {
             </div>
             <div className="h-4 bg-brand-dark rounded-b-xl mx-auto shadow-xl relative z-10 w-[105%] -ml-[2.5%]"></div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const DemoSection = () => {
+  return (
+    <section id="demo" className="py-20 md:py-28 px-6 bg-white border-y border-slate-200/80">
+      <div className="max-w-7xl mx-auto">
+        <div className="max-w-3xl mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold uppercase tracking-[0.18em] mb-4">
+            Tela real da plataforma
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Demonstração do fluxo de correção</h2>
+          <p className="text-brand-gray text-base md:text-lg leading-relaxed max-w-2xl">
+            Abaixo estão telas reais do corretor da RedaLine, com visão do editor, painel por competências, feedback qualitativo e sugestões acionáveis.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {platformScreens.map((screen) => (
+            <article key={screen.src} className="bg-brand-light rounded-[2rem] border border-slate-200 overflow-hidden shadow-card">
+              <div className="aspect-[16/10] bg-slate-100">
+                <img src={screen.src} alt={screen.alt} className="w-full h-full object-cover object-top" />
+              </div>
+              <div className="p-6 md:p-8">
+                <h3 className="text-2xl font-bold text-brand-dark mb-3">{screen.title}</h3>
+                <p className="text-brand-gray leading-relaxed">{screen.description}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -283,9 +339,9 @@ const CTAStrip = () => {
             <p className="text-white/90">Conheça o programa na prática e veja todos os benefícios que a IA educacional pode oferecer para sua escola.</p>
           </div>
         </div>
-        <button className="btn-accent whitespace-nowrap">
-          Solicitar demonstração
-        </button>
+        <a href="#demo" className="btn-accent whitespace-nowrap">
+          Ver demonstração
+        </a>
       </div>
     </div>
   );
@@ -348,7 +404,7 @@ const Footer = () => {
         <div className="max-w-sm w-full">
           <div className="flex items-center gap-2 text-white font-bold text-2xl tracking-tight mb-4">
             <BookOpenCheck className="text-brand-green w-8 h-8" />
-            RedaLine<span className="text-brand-green">AI</span>
+            RedaLine<span className="text-brand-green"></span>
           </div>
           <p className="text-sm text-white/80 leading-relaxed mb-6">
             A tecnologia em avaliação de escrita com Inteligência Artificial que gera impacto real nas notas dos estudantes em todo o Brasil.
@@ -360,6 +416,7 @@ const Footer = () => {
             <h4 className="font-bold text-white mb-6">Plataforma</h4>
             <ul className="space-y-4 text-sm text-white/80">
               <li><a href="#proposta" className="hover:text-brand-green transition-colors">Como funciona</a></li>
+              <li><a href="#demo" className="hover:text-brand-green transition-colors">Demonstração</a></li>
               <li><a href="#programa" className="hover:text-brand-green transition-colors">Para Alunos</a></li>
               <li><a href="#programa" className="hover:text-brand-green transition-colors">Para Escolas</a></li>
               <li><a href="#pricing" className="hover:text-brand-green transition-colors">Planos e Preços</a></li>
@@ -368,24 +425,23 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-white mb-6">Ajuda</h4>
             <ul className="space-y-4 text-sm text-white/80">
-              <li><a href="#" className="hover:text-brand-green transition-colors">Central de Ajuda (FAQ)</a></li>
-              <li><a href="#" className="hover:text-brand-green transition-colors">Termos de Uso</a></li>
-              <li><a href="#" className="hover:text-brand-green transition-colors">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-brand-green transition-colors">Contato Institucional</a></li>
+              <li><a href="mailto:redaline2m@gmail.com" className="hover:text-brand-green transition-colors">Central de Ajuda</a></li>
+              <li><a href="/politica-de-privacidade.html" className="hover:text-brand-green transition-colors">Política de Privacidade</a></li>
+              <li><a href="mailto:redaline2m@gmail.com?subject=Contato%20Institucional%20RedaLine%20AI" className="hover:text-brand-green transition-colors">Contato Institucional</a></li>
             </ul>
           </div>
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="bg-brand-dark p-6 rounded-2xl border border-white/10">
               <h4 className="font-bold text-white mb-2">Contato</h4>
               <p className="text-sm text-white/70 mb-4">redaline2m@gmail.com<br />Mato Grosso, Brasil</p>
-              <button className="btn-accent text-sm w-full py-2">Falar Conosco</button>
+              <a href="mailto:redaline2m@gmail.com" className="btn-accent text-sm w-full py-2">Falar Conosco</a>
             </div>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-white/20 text-center text-xs text-white/60">
-        © 2026 RedaLine AI - Todos os direitos reservados.
+        © 2026 RedaLine - Todos os direitos reservados.
       </div>
     </footer>
   );
@@ -398,6 +454,7 @@ export default function App() {
       <Hero />
       <FloatingStatsCard />
       <ProposalSection />
+      <DemoSection />
       <TargetAudience />
       <CTAStrip />
       <Pricing />
