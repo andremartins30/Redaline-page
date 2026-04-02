@@ -105,10 +105,13 @@ const Hero = () => {
         <div className="relative hidden lg:block h-full min-h-[500px]">
           <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/50 to-transparent z-10"></div>
           <img
-            src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1000&auto=format&fit=crop"
-            alt="Estudante sorrindo"
-            className="absolute inset-0 w-full h-full object-cover object-right"
-            style={{ maskImage: 'linear-gradient(to right, transparent, black 40%)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 40%)' }}
+            src="https://plus.unsplash.com/premium_photo-1681494982804-9e9ff971ae78?q=80&w=1332&auto=format&fit=crop"
+            alt="Estudante estudando em frente ao computador"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 30%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 30%)'
+            }}
           />
         </div>
       </div>
