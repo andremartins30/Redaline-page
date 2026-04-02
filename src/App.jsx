@@ -78,7 +78,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         <div className="max-w-2xl">
           <div className="inline-block px-3 py-1 mb-6 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
-            Corretor Inteligente de Redações
+            Tecnologia que Ensina Redação
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
             Sua evolução <br />
@@ -90,10 +90,11 @@ const Hero = () => {
           </p>
 
           <ul className="space-y-4 mb-10 text-sm md:text-base text-brand-light/90">
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Nota detalhada nas 5 competências do ENEM</li>
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Feedback personalizado com IA avançada</li>
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Apontamentos diretos no seu texto</li>
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Histórico completo de evoluções</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Feedback que explica, orienta e constrói evolução</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Orientação clara baseada nas competências do ENEM</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Feedback que explica o erro e ensina a corrigir</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Apontamentos direto no seu texto</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Acompanhamento da sua evolução ao longo do tempo</li>
           </ul>
 
           <a href="#pricing" className="btn-accent text-lg w-full sm:w-auto">
@@ -124,11 +125,11 @@ const FloatingStatsCard = () => {
             <div className="bg-brand-dark text-white p-3 rounded-2xl">
               <Zap className="w-8 h-8 text-brand-green" />
             </div>
-            <h2 className="text-2xl font-bold text-brand-dark">Acelerador de Aprendizagem</h2>
+            <h2 className="text-2xl font-bold text-brand-dark">Metodologia que acelera a evolução da sua escrita</h2>
           </div>
           <p className="text-brand-dark/80 text-sm font-medium leading-relaxed max-w-xl">
-            A inteligência artificial RedaLine é o primeiro sistema focado exclusivamente no ENEM reconhecido por
-            reduzir o tempo de correção e acelerar o domínio da escrita para aprovação.
+            A RedaLine combina inteligência artificial com uma metodologia de correção de redação desenvolvida por especialistas e validada ao longo de mais de 10 anos de experiência no ENEM.
+            A tecnologia potencializa essa base pedagógica, garantindo orientação consistente, aprofundada e focada na evolução real da escrita.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-6">
@@ -407,7 +408,7 @@ const Footer = () => {
             RedaLine<span className="text-brand-green"></span>
           </div>
           <p className="text-sm text-white/80 leading-relaxed mb-6">
-            A tecnologia em avaliação de escrita com Inteligência Artificial que gera impacto real nas notas dos estudantes em todo o Brasil.
+            Mentoria inteligente em redação que gera evolução real e mensurável para os estudantes em todo o Brasil.
           </p>
         </div>
 
