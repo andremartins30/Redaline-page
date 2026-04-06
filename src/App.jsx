@@ -1,6 +1,61 @@
 import React, { useState } from 'react';
 import { Menu, X, CheckCircle2, Layers, BookOpenCheck, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
 
+const heroLinks = ['Proposta', 'Demonstração', 'O Programa'];
+
+const heroCategories = ['primary school', 'secondary school', 'high secondary school'];
+
+const studentCards = [
+  {
+    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
+    alt: 'Estudante sorrindo com fundo azul',
+    bg: '#2a58d4',
+    height: 'h-[18rem] sm:h-[22rem] lg:h-[24rem]',
+    offset: 'mt-10',
+    objectPosition: '50% 18%',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
+    alt: 'Estudante sorrindo com fundo amarelo',
+    bg: '#f2c91d',
+    height: 'h-[21rem] sm:h-[26rem] lg:h-[28rem]',
+    offset: 'mt-0',
+    objectPosition: '50% 14%',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80',
+    alt: 'Estudante com fundo azul claro',
+    bg: '#86e7ef',
+    height: 'h-[18rem] sm:h-[22rem] lg:h-[24rem]',
+    offset: 'mt-8',
+    objectPosition: '50% 20%',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80',
+    alt: 'Estudante com livros e fundo rosa',
+    bg: '#ff5b6e',
+    height: 'h-[20rem] sm:h-[25rem] lg:h-[27rem]',
+    offset: '-mt-8',
+    objectPosition: '50% 16%',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80',
+    alt: 'Estudante com fundo verde',
+    bg: '#66d36d',
+    height: 'h-[21rem] sm:h-[26rem] lg:h-[29rem]',
+    offset: '-mt-16',
+    objectPosition: '50% 14%',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80',
+    alt: 'Estudante com fundo lilás',
+    bg: '#b7adef',
+    height: 'h-[18rem] sm:h-[23rem] lg:h-[25rem]',
+    offset: '-mt-4',
+    objectPosition: '50% 12%',
+  },
+];
+
 const platformScreens = [
   {
     src: '/Screenshot_51.png',
@@ -34,19 +89,18 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-4 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Lado Esquerdo - Logo */}
         <div className="flex items-center gap-2 text-white font-bold text-xl md:text-2xl tracking-tight">
           <BookOpenCheck className="text-brand-green w-6 h-6 md:w-8 md:h-8" />
           RedaLine<span className="text-brand-green"></span>
         </div>
 
-        {/* Lado Direito - Links e Botão */}
         <div className="flex items-center gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-8 text-brand-light font-medium text-sm">
-            <a href="#proposta" className="hover:text-brand-green transition-colors">Proposta</a>
-            <a href="#demo" className="hover:text-brand-green transition-colors">Demonstração</a>
-            <a href="#programa" className="hover:text-brand-green transition-colors">O Programa</a>
-            <a href="#pricing" className="hover:text-brand-green transition-colors">Planos</a>
+            {heroLinks.map((item) => (
+              <a key={item} href="#" className="hover:text-brand-green transition-colors">
+                {item}
+              </a>
+            ))}
           </div>
 
           <a href="https://portal.redaline.app/" className="btn-primary text-xs md:text-sm py-2 px-4 md:px-6 hover:!bg-brand-green hover:!text-brand-dark hover:!shadow-brand-green/40">
@@ -59,12 +113,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Menu Mobile */}
       <div className={`md:hidden absolute top-full left-0 w-full bg-brand-dark border-b border-white/10 flex flex-col items-center py-4 gap-4 shadow-xl overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-60 border-t border-white/10 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
-        <a href="#proposta" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Proposta</a>
-        <a href="#demo" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Demonstração</a>
-        <a href="#programa" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">O Programa</a>
-        <a href="#pricing" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">Planos</a>
+        {heroLinks.map((item) => (
+          <a key={item} href="#" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">
+            {item}
+          </a>
+        ))}
       </div>
     </nav>
   );
@@ -74,17 +128,22 @@ const Hero = () => {
   return (
     <section className="relative pt-32 pb-32 md:pt-40 md:pb-56 px-6 bg-brand-dark text-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-blue/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+      <div className="absolute left-0 top-0 w-[680px] h-[680px] bg-brand-green/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 items-center relative z-10">
         <div className="max-w-2xl">
-          <div className="inline-block px-3 py-1 mb-6 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
+          <Navbar />
+
+          <div className="inline-block px-3 py-1 mt-8 mb-6 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
             Tecnologia que Ensina Redação
           </div>
+
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
             Sua evolução <br />
             na escrita <br />
-            <span className="text-brand-green">começa aqui..</span>
+            <span className="text-brand-green">começa aqui.</span>
           </h1>
+
           <p className="text-lg md:text-xl text-brand-light/80 mb-8 leading-relaxed font-light max-w-lg">
             Envie sua redação e receba em segundos uma análise completa nas 5 competências do ENEM.
           </p>
@@ -100,19 +159,44 @@ const Hero = () => {
           <a href="#pricing" className="btn-accent text-lg w-full sm:w-auto">
             Criar conta gratuita
           </a>
+
+          <div className="mt-14">
+            <p className="text-xl font-medium text-white/85">Choose your catagory</p>
+            <div className="mt-8 flex flex-wrap gap-10 text-sm text-white/68">
+              {heroCategories.map((category) => (
+                <span key={category}>{category}</span>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="relative hidden lg:block h-full min-h-[500px]">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/50 to-transparent z-10"></div>
-          <img
-            src="https://plus.unsplash.com/premium_photo-1681494982804-9e9ff971ae78?q=80&w=1332&auto=format&fit=crop"
-            alt="Estudante estudando em frente ao computador"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            style={{
-              maskImage: 'linear-gradient(to right, transparent, black 30%)',
-              WebkitMaskImage: 'linear-gradient(to right, transparent, black 30%)'
-            }}
-          />
+        <div className="relative flex justify-center lg:justify-end">
+          <div className="relative w-full max-w-[620px]">
+            <div className="absolute left-10 top-12 h-7 w-7 rounded-full bg-brand-blue" />
+            <div className="absolute right-12 top-0 h-10 w-10 rounded-full bg-brand-green" />
+            <div className="absolute left-16 bottom-28 h-8 w-8 rounded-full bg-brand-green/80" />
+            <div className="absolute right-0 bottom-36 h-7 w-7 rounded-full bg-brand-light/70" />
+
+            <div className="grid grid-cols-3 gap-4 sm:gap-5">
+              {studentCards.map((card) => (
+                <div
+                  key={card.src}
+                  className={`relative overflow-hidden rounded-[2.35rem] ${card.height} ${card.offset}`}
+                  style={{ backgroundColor: card.bg }}
+                >
+                  <img
+                    src={card.src}
+                    alt={card.alt}
+                    className="absolute inset-x-0 bottom-0 top-8 h-[calc(100%-2rem)] w-full object-cover"
+                    style={{ objectPosition: card.objectPosition }}
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/25 to-transparent" />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -454,7 +538,6 @@ const Footer = () => {
 export default function App() {
   return (
     <div className="w-full bg-brand-light font-sans text-brand-dark selection:bg-brand-green selection:text-brand-dark overflow-x-hidden">
-      <Navbar />
       <Hero />
       <FloatingStatsCard />
       <ProposalSection />
