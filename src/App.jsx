@@ -1,15 +1,43 @@
 import React, { useState } from 'react';
-import { Menu, X, CheckCircle2, Layers, BookOpenCheck, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
+import { Menu, X, CheckCircle2, Layers, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
 
-const heroLinks = ['Proposta', 'Demonstração', 'O Programa'];
+const heroLinks = [
+  { label: 'Proposta', href: '#proposta' },
+  { label: 'Demonstração', href: '#demo' },
+  { label: 'O Programa', href: '#programa' },
+  { label: 'Planos', href: '#pricing' },
+];
 
-const heroCategories = ['primary school', 'secondary school', 'high secondary school'];
+const brandSymbolSrc = '/new/Logo_RedaLine-removebg-preview.png';
+
+const BrandLockup = ({ compact = false }) => {
+  const iconSize = compact ? 'h-16 w-16 md:h-14 md:w-14' : 'h-24 w-24 md:h-20 md:w-20';
+  const titleSize = compact ? 'text-xl md:text-2xl' : 'text-3xl md:text-[2.15rem]';
+  const subtitleSize = compact ? 'text-[0.55rem] md:text-[0.62rem]' : 'text-[0.62rem] md:text-[0.7rem]';
+
+  return (
+    <span className="inline-flex items-center gap-3 md:gap-4">
+      <span className="grid place-items-center rounded-xl p-2 shadow-sm">
+        <img src={brandSymbolSrc} alt="Símbolo RedaLine" className={`${iconSize} object-contain`} loading="eager" />
+      </span>
+
+      <span className="leading-none">
+        <span className={`block font-extrabold tracking-tight text-white ${titleSize}`}>
+          Reda<span className="text-brand-green">Line</span>
+        </span>
+        <span className={`mt-1 block uppercase tracking-[0.16em] text-white/78 ${subtitleSize}`}>
+          Tecnologia que Ensina
+        </span>
+      </span>
+    </span>
+  );
+};
 
 const studentCards = [
   {
     src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
     alt: 'Estudante sorrindo com fundo azul',
-    bg: '#2a58d4',
+    bg: '#0f2d57',
     height: 'h-[18rem] sm:h-[22rem] lg:h-[24rem]',
     offset: 'mt-10',
     objectPosition: '50% 18%',
@@ -17,7 +45,7 @@ const studentCards = [
   {
     src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
     alt: 'Estudante sorrindo com fundo amarelo',
-    bg: '#f2c91d',
+    bg: '#9eff1f',
     height: 'h-[21rem] sm:h-[26rem] lg:h-[28rem]',
     offset: 'mt-0',
     objectPosition: '50% 14%',
@@ -25,7 +53,7 @@ const studentCards = [
   {
     src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80',
     alt: 'Estudante com fundo azul claro',
-    bg: '#86e7ef',
+    bg: '#457a00',
     height: 'h-[18rem] sm:h-[22rem] lg:h-[24rem]',
     offset: 'mt-8',
     objectPosition: '50% 20%',
@@ -33,7 +61,7 @@ const studentCards = [
   {
     src: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80',
     alt: 'Estudante com livros e fundo rosa',
-    bg: '#ff5b6e',
+    bg: '#2b5204',
     height: 'h-[20rem] sm:h-[25rem] lg:h-[27rem]',
     offset: '-mt-8',
     objectPosition: '50% 16%',
@@ -41,7 +69,7 @@ const studentCards = [
   {
     src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80',
     alt: 'Estudante com fundo verde',
-    bg: '#66d36d',
+    bg: '#76bd12',
     height: 'h-[21rem] sm:h-[26rem] lg:h-[29rem]',
     offset: '-mt-16',
     objectPosition: '50% 14%',
@@ -49,7 +77,7 @@ const studentCards = [
   {
     src: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80',
     alt: 'Estudante com fundo lilás',
-    bg: '#b7adef',
+    bg: '#153f79',
     height: 'h-[18rem] sm:h-[23rem] lg:h-[25rem]',
     offset: '-mt-4',
     objectPosition: '50% 12%',
@@ -87,18 +115,17 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-4 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
+    <nav className="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 py-4 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2 text-white font-bold text-xl md:text-2xl tracking-tight">
-          <BookOpenCheck className="text-brand-green w-6 h-6 md:w-8 md:h-8" />
-          RedaLine<span className="text-brand-green"></span>
-        </div>
+        <a href="#topo" aria-label="Voltar ao topo" className="inline-flex items-center">
+          <BrandLockup compact />
+        </a>
 
         <div className="flex items-center gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-8 text-brand-light font-medium text-sm">
             {heroLinks.map((item) => (
-              <a key={item} href="#" className="hover:text-brand-green transition-colors">
-                {item}
+              <a key={item.label} href={item.href} aria-label={`Ir para ${item.label}`} className="hover:text-brand-green transition-colors">
+                {item.label}
               </a>
             ))}
           </div>
@@ -115,8 +142,8 @@ const Navbar = () => {
 
       <div className={`md:hidden absolute top-full left-0 w-full bg-brand-dark border-b border-white/10 flex flex-col items-center py-4 gap-4 shadow-xl overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-60 border-t border-white/10 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
         {heroLinks.map((item) => (
-          <a key={item} href="#" onClick={() => setIsOpen(false)} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">
-            {item}
+          <a key={item.label} href={item.href} onClick={() => setIsOpen(false)} aria-label={`Ir para ${item.label}`} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">
+            {item.label}
           </a>
         ))}
       </div>
@@ -127,10 +154,10 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section className="relative pt-32 pb-32 md:pt-40 md:pb-56 px-6 bg-brand-dark text-white overflow-hidden">
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-blue/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-moss/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
       <div className="absolute left-0 top-0 w-[680px] h-[680px] bg-brand-green/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 items-center relative">
         <div className="max-w-2xl">
           <Navbar />
 
@@ -159,20 +186,11 @@ const Hero = () => {
           <a href="#pricing" className="btn-accent text-lg w-full sm:w-auto">
             Criar conta gratuita
           </a>
-
-          <div className="mt-14">
-            <p className="text-xl font-medium text-white/85">Choose your catagory</p>
-            <div className="mt-8 flex flex-wrap gap-10 text-sm text-white/68">
-              {heroCategories.map((category) => (
-                <span key={category}>{category}</span>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className="relative flex justify-center lg:justify-end">
           <div className="relative w-full max-w-[620px]">
-            <div className="absolute left-10 top-12 h-7 w-7 rounded-full bg-brand-blue" />
+            <div className="absolute left-10 top-12 h-7 w-7 rounded-full bg-brand-moss" />
             <div className="absolute right-12 top-0 h-10 w-10 rounded-full bg-brand-green" />
             <div className="absolute left-16 bottom-28 h-8 w-8 rounded-full bg-brand-green/80" />
             <div className="absolute right-0 bottom-36 h-7 w-7 rounded-full bg-brand-light/70" />
@@ -246,7 +264,7 @@ const ProposalSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-12">
             <div className="flex gap-6">
-              <div className="text-brand-blue shrink-0">
+              <div className="text-brand-moss shrink-0">
                 <LineChart className="w-10 h-10" />
               </div>
               <div>
@@ -255,7 +273,7 @@ const ProposalSection = () => {
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="text-brand-blue shrink-0">
+              <div className="text-brand-moss shrink-0">
                 <Target className="w-10 h-10" />
               </div>
               <div>
@@ -264,7 +282,7 @@ const ProposalSection = () => {
               </div>
             </div>
             <div className="flex gap-6">
-              <div className="text-brand-blue shrink-0">
+              <div className="text-brand-moss shrink-0">
                 <Clock className="w-10 h-10" />
               </div>
               <div>
@@ -289,7 +307,7 @@ const ProposalSection = () => {
                   <div className="w-1/4 bg-brand-light rounded-lg border border-gray-100 p-4 hidden md:block">
                     <div className="w-full h-2 bg-gray-200 rounded-full mb-3"></div>
                     <div className="w-3/4 h-2 bg-gray-200 rounded-full mb-8"></div>
-                    <div className="w-full h-8 bg-brand-blue/10 rounded-md mb-2"></div>
+                    <div className="w-full h-8 bg-brand-moss/10 rounded-md mb-2"></div>
                     <div className="w-full h-8 bg-brand-light rounded-md mb-2 border border-gray-100"></div>
                     <div className="w-full h-8 bg-brand-light rounded-md mb-2 border border-gray-100"></div>
                   </div>
@@ -327,7 +345,7 @@ const DemoSection = () => {
     <section id="demo" className="py-20 md:py-28 px-6 bg-white border-y border-slate-200/80">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold uppercase tracking-[0.18em] mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-moss/10 text-brand-moss text-xs font-semibold uppercase tracking-[0.18em] mb-4">
             Tela real da plataforma
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Demonstração do fluxo de correção</h2>
@@ -365,7 +383,7 @@ const TargetAudience = () => {
         {/* Card Alunos */}
         <div className="bg-white text-brand-dark rounded-[2rem] p-8 md:p-12 shadow-xl flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1 grid grid-cols-2 gap-4">
-            <div className="bg-brand-blue/10 rounded-3xl aspect-square flex items-center justify-center p-6"><BookOpen className="w-full h-full text-brand-blue opacity-80" /></div>
+            <div className="bg-brand-moss/10 rounded-3xl aspect-square flex items-center justify-center p-6"><BookOpen className="w-full h-full text-brand-moss opacity-80" /></div>
             <div className="bg-brand-green/20 rounded-3xl aspect-square flex items-center justify-center p-6"><PenTool className="w-full h-full text-brand-green opacity-80" /></div>
             <div className="col-span-2 relative h-40 rounded-3xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Aluno estudando" />
@@ -373,7 +391,7 @@ const TargetAudience = () => {
           </div>
           <div className="flex-[1.5]">
             <div className="flex items-center gap-3 mb-8">
-              <Users className="text-brand-blue w-8 h-8" />
+              <Users className="text-brand-moss w-8 h-8" />
               <h3 className="text-3xl font-bold">Alunos</h3>
             </div>
             <ul className="space-y-5 text-sm">
@@ -390,7 +408,7 @@ const TargetAudience = () => {
         <div className="bg-white text-brand-dark rounded-[2rem] p-8 md:p-12 shadow-xl flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-[1.5] order-2 md:order-1">
             <div className="flex items-center gap-3 mb-8">
-              <Building2 className="text-brand-blue w-8 h-8" />
+              <Building2 className="text-brand-moss w-8 h-8" />
               <h3 className="text-3xl font-bold">Professores e Escolas</h3>
             </div>
             <ul className="space-y-5 text-sm">
@@ -405,7 +423,7 @@ const TargetAudience = () => {
             <div className="col-span-2 relative h-40 rounded-3xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Professor" />
             </div>
-            <div className="bg-brand-blue/10 rounded-3xl aspect-square flex items-center justify-center p-6"><BarChart3 className="w-full h-full text-brand-blue opacity-80" /></div>
+            <div className="bg-brand-moss/10 rounded-3xl aspect-square flex items-center justify-center p-6"><BarChart3 className="w-full h-full text-brand-moss opacity-80" /></div>
             <div className="bg-brand-dark/10 rounded-3xl aspect-square flex items-center justify-center p-6"><Layers className="w-full h-full text-brand-dark opacity-80" /></div>
           </div>
         </div>
@@ -416,7 +434,7 @@ const TargetAudience = () => {
 
 const CTAStrip = () => {
   return (
-    <div className="bg-brand-blue text-white py-12 px-6 border-b border-brand-dark/20">
+    <div className="bg-brand-dark text-white py-12 px-6 border-b border-brand-moss/30">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <div className="flex items-center gap-6">
           <div className="w-24 h-24 rounded-2xl bg-white/10 hidden md:flex items-center justify-center shrink-0">
@@ -451,9 +469,9 @@ const Pricing = () => {
             <p className="text-brand-gray text-sm mb-8 pb-8 border-b border-gray-100">Para estudantes que praticam toda semana.</p>
             <div className="text-5xl font-extrabold text-brand-dark mb-8">R$ 19<span className="text-xl font-medium text-brand-gray">/mês</span></div>
             <ul className="space-y-4 text-sm text-brand-gray mb-10 flex-1">
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0" /> <strong>4 correções</strong> por mês</li>
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0" /> Análise detalhada de 5 competências</li>
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0" /> Nota estimada formato ENEM</li>
+              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> <strong>4 correções</strong> por mês</li>
+              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Análise detalhada de 5 competências</li>
+              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Nota estimada formato ENEM</li>
               <li className="flex gap-3 items-center opacity-50"><CheckCircle2 className="w-5 h-5 shrink-0" /> Sem limite de acessos ao painel</li>
             </ul>
             <button className="w-full py-4 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30 rounded-xl font-bold">
@@ -487,12 +505,11 @@ const Pricing = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-blue text-white pt-20 md:pt-24 pb-10 px-6 mt-[-2rem] md:mt-[-4rem] relative z-0">
+    <footer className="bg-brand-dark text-white pt-20 md:pt-24 pb-10 px-6 mt-[-2rem] md:mt-[-4rem] relative z-0">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 pt-12 md:pt-16">
         <div className="max-w-sm w-full">
-          <div className="flex items-center gap-2 text-white font-bold text-2xl tracking-tight mb-4">
-            <BookOpenCheck className="text-brand-green w-8 h-8" />
-            RedaLine<span className="text-brand-green"></span>
+          <div className="inline-flex items-center mb-4">
+            <BrandLockup />
           </div>
           <p className="text-sm text-white/80 leading-relaxed mb-6">
             Mentoria inteligente em redação que gera evolução real e mensurável para os estudantes em todo o Brasil.
@@ -537,7 +554,7 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="w-full bg-brand-light font-sans text-brand-dark selection:bg-brand-green selection:text-brand-dark overflow-x-hidden">
+    <div id="topo" className="w-full bg-brand-light font-sans text-brand-dark selection:bg-brand-green selection:text-brand-dark overflow-x-hidden">
       <Hero />
       <FloatingStatsCard />
       <ProposalSection />

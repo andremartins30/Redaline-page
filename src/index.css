@@ -7,6 +7,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
   }
 
   body {
@@ -20,14 +21,14 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-green to-emerald-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-green to-brand-moss;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center bg-brand-blue text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30;
+    @apply inline-flex items-center justify-center bg-brand-blue text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-[#163da8] hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30;
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center bg-brand-green text-brand-dark font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-[#00cc6a] shadow-lg shadow-brand-green/20 hover:shadow-brand-green/40;
+    @apply inline-flex items-center justify-center bg-brand-green text-brand-dark font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-brand-moss hover:text-brand-light shadow-lg shadow-brand-green/20 hover:shadow-brand-moss/40;
   }
 }

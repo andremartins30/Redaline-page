@@ -8,9 +8,10 @@ export default {
     extend: {
       colors: {
         brand: {
-          dark: "#0b192c", // Deep navy blue (RedaLine base)
-          green: "#00E676", // Neon green (RedaLine accent)
-          blue: "#1D4ED8", // Royal blue (RedaLine buttons)
+          dark: "#001B3D", // Oceano profundo (base da marca)
+          green: "#9EFF1F", // Verde vibrante (destaque)
+          moss: "#457A00", // Verde musgo (secundario)
+          blue: "#1D4ED8", // Azul mantido para CTAs
           light: "#F8FAFC", // Light surface background
           gray: "#334155", // Neutral text
         }
