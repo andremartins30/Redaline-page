@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, X, CheckCircle2, Layers, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
 
 const heroLinks = [
@@ -35,79 +35,101 @@ const BrandLockup = ({ compact = false }) => {
 
 const studentCards = [
   {
-    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
+    src: 'https://www.sapicua.com.br/sites/default/files/articles/03%20Quase%2050%20mil%20pessoas%20fizeram%20o%20Exame%20Certificador%20da%20EJA%20em%20Mato%20Grosso.jpg',
     alt: 'Estudante sorrindo com fundo azul',
     bg: '#0f2d57',
-    height: 'h-[18rem] sm:h-[22rem] lg:h-[24rem]',
-    offset: 'mt-10',
-    objectPosition: '50% 18%',
+    height: 'h-[15rem] sm:h-[18rem] lg:h-[20rem]',
+    offset: 'mt-4',
+    objectPosition: '48% 18%',
   },
   {
-    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
+    src: 'https://ifmt.edu.br/wp-content/uploads/2025/10/capa_arte_intercambio.png__1000x800_q80_subsampling-2_upscale.png',
     alt: 'Estudante sorrindo com fundo amarelo',
     bg: '#9eff1f',
-    height: 'h-[21rem] sm:h-[26rem] lg:h-[28rem]',
+    height: 'h-[17rem] sm:h-[20rem] lg:h-[22rem]',
     offset: 'mt-0',
-    objectPosition: '50% 14%',
+    objectPosition: '60% 5%',
   },
   {
-    src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80',
+    src: 'https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/06/estudante-escrevendo-redacao.jpg?w=1200&h=1200&crop=1',
     alt: 'Estudante com fundo azul claro',
     bg: '#457a00',
-    height: 'h-[18rem] sm:h-[22rem] lg:h-[24rem]',
-    offset: 'mt-8',
+    height: 'h-[15rem] sm:h-[18rem] lg:h-[20rem]',
+    offset: 'mt-3',
     objectPosition: '50% 20%',
   },
   {
-    src: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80',
+    src: 'https://primeirapagina.com.br/wp-content/uploads/2024/01/estudante-enem.jpg',
+
     alt: 'Estudante com livros e fundo rosa',
     bg: '#2b5204',
-    height: 'h-[20rem] sm:h-[25rem] lg:h-[27rem]',
-    offset: '-mt-8',
+    height: 'h-[16rem] sm:h-[19rem] lg:h-[21rem]',
+    offset: '-mt-2',
     objectPosition: '50% 16%',
   },
   {
-    src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80',
+    src: 'https://s2-g1.glbimg.com/Xj68sqHfDif5h11G9PFGCw0Hx2w=/0x0:800x533/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/f/D/AyjdvAQKuErAXUF2rOuA/22671-4a2af4c3-5249-e644-92da-7b3c69f0f4de.jpg',
     alt: 'Estudante com fundo verde',
     bg: '#76bd12',
-    height: 'h-[21rem] sm:h-[26rem] lg:h-[29rem]',
-    offset: '-mt-16',
-    objectPosition: '50% 14%',
+    height: 'h-[20rem] sm:h-[22rem] lg:h-[23rem]',
+    offset: 'mt-0',
+    objectPosition: '50% 18%',
   },
   {
-    src: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80',
+    src: 'https://assets.b9.com.br/wp-content/uploads/2018/11/enem-resultado.jpg',
     alt: 'Estudante com fundo lilás',
     bg: '#153f79',
-    height: 'h-[18rem] sm:h-[23rem] lg:h-[25rem]',
-    offset: '-mt-4',
+    height: 'h-[17rem] sm:h-[19rem] lg:h-[21rem]',
+    offset: '-mt-3',
     objectPosition: '50% 12%',
   },
 ];
 
 const platformScreens = [
   {
+    src: '/new/WhatsApp%20Image%202026-04-16%20at%2000.39.43%20(1).jpeg',
+    alt: 'Painel do aluno com indicadores de desempenho e evolução',
+    title: 'Painel do aluno',
+    description: 'Visão completa da evolução, nota, competências e foco da semana em uma interface clara e visual.',
+  },
+  {
+    src: '/new/WhatsApp%20Image%202026-04-16%20at%2000.39.43%20(2).jpeg',
+    alt: 'Painel do professor com diagnóstico institucional e turmas',
+    title: 'Painel do professor',
+    description: 'Leitura rápida da instituição, turmas prioritárias, diagnósticos e competências que mais derrubam nota.',
+  },
+  {
+    src: '/new/WhatsApp%20Image%202026-04-16%20at%2000.39.43%20(3).jpeg',
+    alt: 'Painel do gestor com visão consolidada institucional',
+    title: 'Painel do gestor',
+    description: 'Visão consolidada de desempenho, evolução institucional, alertas pedagógicos e ranking de turmas.',
+  },
+];
+
+const correctionScreens = [
+  {
     src: '/Screenshot_51.png',
-    alt: 'Tela do corretor de redações com editor e nota geral',
-    title: 'Correção em segundos',
-    description: 'Editor para digitar ou enviar imagem, contagem de palavras e nota geral com apontamentos automáticos.',
+    alt: 'Tela de correção com pontuação geral e lista de apontamentos',
+    title: 'Correção geral',
+    description: 'Visão inicial do corretor com nota, métricas de texto e acesso rápido aos apontamentos principais.',
   },
   {
     src: '/Screenshot_53.png',
-    alt: 'Tela com apontamentos detalhados e competências da redação',
-    title: 'Apontamentos por competência',
-    description: 'Visualização de trechos destacados, filtros por gravidade e painel lateral com as 5 competências do ENEM.',
+    alt: 'Tela de texto com marcações destacadas e painel lateral de competências',
+    title: 'Texto com apontamentos',
+    description: 'Trechos destacados no texto e painel lateral com o detalhamento por competência.',
   },
   {
     src: '/Screenshot_54.png',
     alt: 'Tela de feedback qualitativo da redação',
-    title: 'Feedback orientado',
-    description: 'Sugestões práticas de reescrita, exemplos corrigidos e análise qualitativa para acelerar a evolução do aluno.',
+    title: 'Feedback qualitativo',
+    description: 'Avaliação escrita com pontos fortes, melhorias e orientações para reescrita.',
   },
   {
     src: '/Screenshot_55.png',
     alt: 'Tela de sugestões de melhoria da redação',
     title: 'Sugestões acionáveis',
-    description: 'Lista objetiva de melhorias com prioridade, foco em repertório, argumentação e proposta de intervenção.',
+    description: 'Lista objetiva de ajustes com foco em clareza, coesão e proposta de intervenção.',
   },
 ];
 
@@ -158,7 +180,7 @@ const Hero = () => {
       <div className="absolute left-0 top-0 w-[680px] h-[680px] bg-brand-green/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 items-center relative">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl lg:py-6 lg:self-center">
           <Navbar />
 
           <div className="inline-block px-3 py-1 mt-8 mb-6 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
@@ -188,7 +210,7 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="relative flex justify-center lg:justify-end">
+        <div className="relative flex justify-center lg:justify-end lg:self-center">
           <div className="relative w-full max-w-[620px]">
             <div className="absolute left-10 top-12 h-7 w-7 rounded-full bg-brand-moss" />
             <div className="absolute right-12 top-0 h-10 w-10 rounded-full bg-brand-green" />
@@ -205,7 +227,7 @@ const Hero = () => {
                   <img
                     src={card.src}
                     alt={card.alt}
-                    className="absolute inset-x-0 bottom-0 top-8 h-[calc(100%-2rem)] w-full object-cover"
+                    className="absolute inset-x-0 bottom-0 top-5 h-[calc(100%-1.25rem)] w-full object-cover"
                     style={{ objectPosition: card.objectPosition }}
                     loading="eager"
                   />
@@ -341,24 +363,51 @@ const ProposalSection = () => {
 };
 
 const DemoSection = () => {
+  const [activeScreen, setActiveScreen] = useState(null);
+
+  useEffect(() => {
+    if (!activeScreen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setActiveScreen(null);
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeScreen]);
+
   return (
     <section id="demo" className="py-20 md:py-28 px-6 bg-white border-y border-slate-200/80">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-moss/10 text-brand-moss text-xs font-semibold uppercase tracking-[0.18em] mb-4">
-            Tela real da plataforma
+            Dashboards reais da plataforma
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Demonstração do fluxo de correção</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Demonstração dos painéis da RedaLine</h2>
           <p className="text-brand-gray text-base md:text-lg leading-relaxed max-w-2xl">
-            Abaixo estão telas reais do corretor da RedaLine, com visão do editor, painel por competências, feedback qualitativo e sugestões acionáveis.
+            Abaixo estão três telas reais dos dashboards da RedaLine, com visões pensadas para aluno, professor e gestor.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
           {platformScreens.map((screen) => (
             <article key={screen.src} className="bg-brand-light rounded-[2rem] border border-slate-200 overflow-hidden shadow-card">
-              <div className="aspect-[16/10] bg-slate-100">
-                <img src={screen.src} alt={screen.alt} className="w-full h-full object-cover object-top" />
+              <div className="aspect-[16/10] bg-white p-2">
+                <button
+                  type="button"
+                  onClick={() => setActiveScreen(screen)}
+                  className="block w-full h-full cursor-zoom-in overflow-hidden rounded-[1.35rem] focus:outline-none focus:ring-2 focus:ring-brand-green/60"
+                  aria-label={`Ampliar ${screen.title}`}
+                >
+                  <img src={screen.src} alt={screen.alt} className="w-full h-full object-contain transition-transform duration-300 hover:scale-[1.02]" />
+                </button>
               </div>
               <div className="p-6 md:p-8">
                 <h3 className="text-2xl font-bold text-brand-dark mb-3">{screen.title}</h3>
@@ -367,6 +416,65 @@ const DemoSection = () => {
             </article>
           ))}
         </div>
+
+        <div className="mt-16 md:mt-20">
+          <div className="max-w-3xl mb-8 md:mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-moss/10 text-brand-moss text-xs font-semibold uppercase tracking-[0.18em] mb-4">
+              Tela de correção
+            </div>
+            <h3 className="text-2xl md:text-4xl font-bold text-brand-dark mb-4">Detalhamento da análise da redação</h3>
+            <p className="text-brand-gray text-base md:text-lg leading-relaxed max-w-2xl">
+              Essas telas mostram como a RedaLine evidencia os trechos analisados, os comentários e as sugestões de melhoria com clareza.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {correctionScreens.map((screen) => (
+              <article key={screen.src} className="bg-brand-light rounded-[2rem] border border-slate-200 overflow-hidden shadow-card">
+                <div className="aspect-[16/10] bg-white p-2">
+                  <button
+                    type="button"
+                    onClick={() => setActiveScreen(screen)}
+                    className="block w-full h-full cursor-zoom-in overflow-hidden rounded-[1.35rem] focus:outline-none focus:ring-2 focus:ring-brand-green/60"
+                    aria-label={`Ampliar ${screen.title}`}
+                  >
+                    <img src={screen.src} alt={screen.alt} className="w-full h-full object-contain transition-transform duration-300 hover:scale-[1.02]" />
+                  </button>
+                </div>
+                <div className="p-6 md:p-8">
+                  <h3 className="text-2xl font-bold text-brand-dark mb-3">{screen.title}</h3>
+                  <p className="text-brand-gray leading-relaxed">{screen.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {activeScreen && (
+          <div
+            className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-sm px-4 py-6 md:px-6 flex items-center justify-center"
+            onClick={() => setActiveScreen(null)}
+            role="presentation"
+          >
+            <div className="relative w-full max-w-6xl max-h-[90vh] rounded-[2rem] bg-white shadow-2xl overflow-hidden" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-label={activeScreen.title}>
+              <button
+                type="button"
+                onClick={() => setActiveScreen(null)}
+                className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-brand-dark text-white shadow-lg hover:bg-brand-green hover:text-brand-dark transition-colors"
+                aria-label="Fechar imagem ampliada"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <div className="max-h-[90vh] overflow-auto bg-brand-light p-3 md:p-4">
+                <img src={activeScreen.src} alt={activeScreen.alt} className="w-full h-auto object-contain rounded-[1.4rem] bg-white" />
+              </div>
+              <div className="border-t border-slate-200 px-5 py-4 md:px-6 md:py-5 bg-white">
+                <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-1">{activeScreen.title}</h3>
+                <p className="text-sm md:text-base text-brand-gray">{activeScreen.description}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -454,50 +562,95 @@ const CTAStrip = () => {
 }
 
 const Pricing = () => {
+  const [pricingTab, setPricingTab] = useState('students');
+  const isStudentsTab = pricingTab === 'students';
+
   return (
     <section id="pricing" className="py-20 md:py-32 px-6 bg-brand-light">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Planos Para Sua Aprovação</h2>
           <p className="text-brand-gray text-lg max-w-2xl mx-auto">Escolha o plano ideal para acelerar sua preparação. Correção profissional ao seu alcance.</p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto relative z-10">
-          {/* Plano Essencial */}
-          <div className="bg-white rounded-[2rem] p-10 shadow-card border border-gray-100 flex flex-col">
-            <h3 className="text-2xl font-bold text-brand-dark mb-2">Essencial</h3>
-            <p className="text-brand-gray text-sm mb-8 pb-8 border-b border-gray-100">Para estudantes que praticam toda semana.</p>
-            <div className="text-5xl font-extrabold text-brand-dark mb-8">R$ 19<span className="text-xl font-medium text-brand-gray">/mês</span></div>
-            <ul className="space-y-4 text-sm text-brand-gray mb-10 flex-1">
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> <strong>4 correções</strong> por mês</li>
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Análise detalhada de 5 competências</li>
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Nota estimada formato ENEM</li>
-              <li className="flex gap-3 items-center opacity-50"><CheckCircle2 className="w-5 h-5 shrink-0" /> Sem limite de acessos ao painel</li>
-            </ul>
-            <button className="w-full py-4 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30 rounded-xl font-bold">
-              Assinar Essencial
+          <div className="mt-8 inline-flex items-center rounded-2xl bg-white p-1.5 border border-gray-200 shadow-sm">
+            <button
+              type="button"
+              onClick={() => setPricingTab('students')}
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${isStudentsTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
+            >
+              Estudantes
+            </button>
+            <button
+              type="button"
+              onClick={() => setPricingTab('companies')}
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${!isStudentsTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
+            >
+              Empresas
             </button>
           </div>
+        </div>
 
-          {/* Plano Intensivo */}
-          <div className="bg-brand-dark text-white rounded-[2rem] p-10 shadow-2xl relative border-2 border-brand-green transform md:-translate-y-4 flex flex-col">
-            <div className="absolute top-0 right-6 -translate-y-1/2 bg-brand-green text-brand-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-              Recomendado
+        {isStudentsTab ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto relative z-10">
+            {/* Plano Essencial */}
+            <div className="bg-white rounded-[2rem] p-10 shadow-card border border-gray-100 flex flex-col">
+              <h3 className="text-2xl font-bold text-brand-dark mb-2">Essencial</h3>
+              <p className="text-brand-gray text-sm mb-8 pb-8 border-b border-gray-100">Para estudantes que praticam toda semana.</p>
+              <div className="text-5xl font-extrabold text-brand-dark mb-8">R$ 19<span className="text-xl font-medium text-brand-gray">/mês</span></div>
+              <ul className="space-y-4 text-sm text-brand-gray mb-10 flex-1">
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> <strong>4 correções</strong> por mês</li>
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Análise detalhada de 5 competências</li>
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Nota estimada formato ENEM</li>
+                <li className="flex gap-3 items-center opacity-50"><CheckCircle2 className="w-5 h-5 shrink-0" /> Sem limite de acessos ao painel</li>
+              </ul>
+              <button className="w-full py-4 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30 rounded-xl font-bold">
+                Assinar Essencial
+              </button>
             </div>
-            <h3 className="text-2xl font-bold mb-2">Intensivo</h3>
-            <p className="text-brand-light/70 text-sm mb-8 pb-8 border-b border-white/10">Para a máxima performance na redação.</p>
-            <div className="text-5xl font-extrabold mb-8">R$ 39<span className="text-xl font-medium opacity-70">/mês</span></div>
-            <ul className="space-y-4 text-sm text-brand-light mt-2 mb-10 flex-1">
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> <span className="text-brand-green font-bold">Correções Ilimitadas</span></li>
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Banco de redações Nota 1000</li>
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Gráficos de evolução diária</li>
-              <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Sugestões de reescrita da IA</li>
-            </ul>
-            <button className="w-full py-4 bg-brand-green text-brand-dark hover:bg-emerald-400 transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-green/40 rounded-xl font-bold shadow-lg shadow-brand-green/20">
-              Assinar Intensivo
-            </button>
+
+            {/* Plano Intensivo */}
+            <div className="bg-brand-dark text-white rounded-[2rem] p-10 shadow-2xl relative border-2 border-brand-green transform md:-translate-y-4 flex flex-col">
+              <div className="absolute top-0 right-6 -translate-y-1/2 bg-brand-green text-brand-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                Recomendado
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Intensivo</h3>
+              <p className="text-brand-light/70 text-sm mb-8 pb-8 border-b border-white/10">Para a máxima performance na redação.</p>
+              <div className="text-5xl font-extrabold mb-8">R$ 39<span className="text-xl font-medium opacity-70">/mês</span></div>
+              <ul className="space-y-4 text-sm text-brand-light mt-2 mb-10 flex-1">
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> <span className="text-brand-green font-bold">Correções Ilimitadas</span></li>
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Banco de redações Nota 1000</li>
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Gráficos de evolução diária</li>
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Sugestões de reescrita da IA</li>
+              </ul>
+              <button className="w-full py-4 bg-brand-green text-brand-dark hover:bg-emerald-400 transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-green/40 rounded-xl font-bold shadow-lg shadow-brand-green/20">
+                Assinar Intensivo
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="max-w-2xl mx-auto relative z-10">
+            <div className="bg-brand-dark text-white rounded-[2rem] p-10 shadow-2xl border-2 border-brand-green flex flex-col">
+              <h3 className="text-2xl font-bold mb-2">Plano Corporativo</h3>
+              <p className="text-brand-light/80 text-sm mb-8 pb-8 border-b border-white/10">
+                Para escolas, cursinhos e redes de ensino que querem escalar resultados com acompanhamento inteligente.
+              </p>
+              <div className="text-4xl md:text-5xl font-extrabold mb-8 text-brand-green">Contate-nos</div>
+              <ul className="space-y-4 text-sm text-brand-light mt-2 mb-10 flex-1">
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Gestão de turmas e relatórios por desempenho</li>
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Dashboard com métricas pedagógicas em tempo real</li>
+                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Suporte para implantação institucional</li>
+              </ul>
+              <a
+                href="https://wa.me/?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20plano%20corporativo%20da%20RedaLine."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-4 bg-brand-green text-brand-dark hover:bg-emerald-400 transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-green/40 rounded-xl font-bold shadow-lg shadow-brand-green/20 text-center"
+              >
+                Falar no WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
