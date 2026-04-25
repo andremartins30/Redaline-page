@@ -11,8 +11,8 @@ const heroLinks = [
 const brandSymbolSrc = '/new/Logo_RedaLine-removebg-preview.png';
 
 const BrandLockup = ({ compact = false }) => {
-  const iconSize = compact ? 'h-16 w-16 md:h-14 md:w-14' : 'h-24 w-24 md:h-20 md:w-20';
-  const titleSize = compact ? 'text-xl md:text-2xl' : 'text-3xl md:text-[2.15rem]';
+  const iconSize = compact ? 'h-12 w-12 md:h-11 md:w-11' : 'h-24 w-24 md:h-20 md:w-20';
+  const titleSize = compact ? 'text-lg md:text-xl' : 'text-3xl md:text-[2.15rem]';
   const subtitleSize = compact ? 'text-[0.55rem] md:text-[0.62rem]' : 'text-[0.62rem] md:text-[0.7rem]';
 
   return (
@@ -136,8 +136,25 @@ const correctionScreens = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleNavClick = (event, href) => {
+    event.preventDefault();
+    setIsOpen(false);
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    const navbarHeight = document.getElementById('main-navbar')?.offsetHeight ?? 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    const safeOffset = 0;
+
+    window.scrollTo({
+      top: Math.max(targetTop - navbarHeight - safeOffset, 0),
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 py-4 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
+    <nav id="main-navbar" className="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 py-1.5 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="#topo" aria-label="Voltar ao topo" className="inline-flex items-center">
           <BrandLockup compact />
@@ -146,7 +163,13 @@ const Navbar = () => {
         <div className="flex items-center gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-8 text-brand-light font-medium text-sm">
             {heroLinks.map((item) => (
-              <a key={item.label} href={item.href} aria-label={`Ir para ${item.label}`} className="hover:text-brand-green transition-colors">
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(event) => handleNavClick(event, item.href)}
+                aria-label={`Ir para ${item.label}`}
+                className="hover:text-brand-green transition-colors"
+              >
                 {item.label}
               </a>
             ))}
@@ -164,7 +187,13 @@ const Navbar = () => {
 
       <div className={`md:hidden absolute top-full left-0 w-full bg-brand-dark border-b border-white/10 flex flex-col items-center py-4 gap-4 shadow-xl overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-60 border-t border-white/10 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
         {heroLinks.map((item) => (
-          <a key={item.label} href={item.href} onClick={() => setIsOpen(false)} aria-label={`Ir para ${item.label}`} className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2">
+          <a
+            key={item.label}
+            href={item.href}
+            onClick={(event) => handleNavClick(event, item.href)}
+            aria-label={`Ir para ${item.label}`}
+            className="text-brand-light font-medium hover:text-brand-green transition-colors w-full text-center py-2"
+          >
             {item.label}
           </a>
         ))}
@@ -175,15 +204,15 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-32 md:pt-40 md:pb-56 px-6 bg-brand-dark text-white overflow-hidden">
+    <section className="relative pt-28 pb-28 md:pt-24 md:pb-56 px-6 bg-brand-dark text-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-moss/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
       <div className="absolute left-0 top-0 w-[680px] h-[680px] bg-brand-green/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 items-center relative">
-        <div className="max-w-2xl lg:py-6 lg:self-center">
+        <div className="max-w-2xl lg:py-1 lg:self-center">
           <Navbar />
 
-          <div className="inline-block px-3 py-1 mt-8 mb-6 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
+          <div className="inline-block px-3 py-1 mt-1 mb-5 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
             Tecnologia que Ensina Redação
           </div>
 
@@ -276,7 +305,7 @@ const FloatingStatsCard = () => {
 
 const ProposalSection = () => {
   return (
-    <section id="proposta" className="py-16 md:py-20 px-6">
+    <section id="proposta" className="py-16 md:py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl md:text-4xl font-light text-brand-dark mb-2">Conheça a nossa proposta para</h2>
@@ -316,10 +345,8 @@ const ProposalSection = () => {
           </div>
 
           <div className="relative">
-            {/* Laptop Mockup */}
             <div className="bg-brand-gray rounded-t-3xl pt-6 px-6 relative border-b-4 border-brand-dark shadow-2xl overflow-hidden aspect-video flex flex-col">
               <div className="bg-white flex-1 rounded-t-xl overflow-hidden relative border border-brand-gray/20">
-                {/* Fake App Interface */}
                 <div className="h-10 bg-brand-light flex items-center px-4 border-b border-gray-200">
                   <div className="w-3 h-3 rounded-full bg-red-400 mr-2"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-400 mr-2"></div>
@@ -344,7 +371,6 @@ const ProposalSection = () => {
                       <div className="w-full h-2 bg-brand-light rounded-full"></div>
                       <div className="w-4/5 h-2 bg-brand-light rounded-full"></div>
                     </div>
-                    {/* Floating green correction box */}
                     <div className="absolute right-4 top-14 bg-brand-green/20 border border-brand-green p-3 rounded-lg w-40 backdrop-blur-sm">
                       <div className="text-[10px] font-bold text-brand-dark mb-1">Competência 1</div>
                       <div className="w-full h-1 bg-brand-green/50 rounded-full mb-1"></div>
@@ -357,6 +383,99 @@ const ProposalSection = () => {
             <div className="h-4 bg-brand-dark rounded-b-xl mx-auto shadow-xl relative z-10 w-[105%] -ml-[2.5%]"></div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+const Pricing = () => {
+  const [pricingTab, setPricingTab] = useState('students');
+  const isStudentsTab = pricingTab === 'students';
+
+  return (
+    <section id="pricing" className="px-6 py-16 md:pt-8 bg-brand-light">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-8 md:mb-8 flex flex-col items-center text-center">
+          <div className="max-w-2xl">
+            <h2 className="mb-4 text-3xl font-bold text-brand-dark md:text-5xl">Planos Para Sua Aprovação</h2>
+            <p className="text-base text-brand-gray md:text-lg">Escolha o plano ideal para acelerar sua preparação. Correção profissional ao seu alcance.</p>
+          </div>
+
+          <div className="mt-4 inline-flex w-full items-center justify-center rounded-2xl border border-gray-200 bg-white p-1.5 shadow-sm sm:w-auto">
+            <button
+              type="button"
+              onClick={() => setPricingTab('students')}
+              className={`flex-1 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:flex-none ${isStudentsTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
+            >
+              Estudantes
+            </button>
+            <button
+              type="button"
+              onClick={() => setPricingTab('companies')}
+              className={`flex-1 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:flex-none ${!isStudentsTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
+            >
+              Empresas
+            </button>
+          </div>
+        </div>
+
+        {isStudentsTab ? (
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+            <div className="flex h-full flex-col rounded-[2rem] border border-gray-100 bg-white p-6 shadow-card md:p-8">
+              <h3 className="mb-2 text-xl font-bold text-brand-dark md:text-2xl">Essencial</h3>
+              <p className="mb-5 border-b border-gray-100 pb-5 text-sm text-brand-gray">Para estudantes que praticam toda semana.</p>
+              <div className="mb-6 text-4xl font-extrabold text-brand-dark md:text-5xl">R$ 19<span className="text-base font-medium text-brand-gray md:text-xl">/mês</span></div>
+              <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-gray">
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-moss" /> <strong>4 correções</strong> por mês</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-moss" /> Análise detalhada de 5 competências</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-moss" /> Nota estimada formato ENEM</li>
+                <li className="flex items-center gap-3 opacity-50"><CheckCircle2 className="h-5 w-5 shrink-0" /> Sem limite de acessos ao painel</li>
+              </ul>
+              <button className="w-full rounded-xl border-2 border-brand-blue px-4 py-3.5 text-sm font-bold text-brand-blue transition-all duration-300 hover:-translate-y-1 hover:bg-brand-blue hover:text-white hover:shadow-lg hover:shadow-brand-blue/30 md:text-base">
+                Assinar Essencial
+              </button>
+            </div>
+
+            <div className="relative flex h-full flex-col rounded-[2rem] border-2 border-brand-green bg-brand-dark p-6 text-white shadow-2xl md:p-8 lg:-translate-y-2">
+              <div className="absolute right-6 top-0 -translate-y-1/2 rounded-full bg-brand-green px-4 py-1 text-xs font-bold uppercase tracking-wider text-brand-dark">
+                Recomendado
+              </div>
+              <h3 className="mb-2 text-xl font-bold md:text-2xl">Intensivo</h3>
+              <p className="mb-5 border-b border-white/10 pb-5 text-sm text-brand-light/70">Para a máxima performance na redação.</p>
+              <div className="mb-6 text-4xl font-extrabold md:text-5xl">R$ 39<span className="text-base font-medium opacity-70 md:text-xl">/mês</span></div>
+              <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-light">
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> <span className="font-bold text-brand-green">Correções Ilimitadas</span></li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Banco de redações Nota 1000</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Gráficos de evolução diária</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Sugestões de reescrita da IA</li>
+              </ul>
+              <button className="w-full rounded-xl bg-brand-green px-4 py-3.5 text-sm font-bold text-brand-dark shadow-lg shadow-brand-green/20 transition-all duration-300 hover:scale-[1.02] hover:bg-emerald-400 hover:shadow-brand-green/40 md:text-base">
+                Assinar Intensivo
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="mx-auto max-w-5xl">
+            <div className="mx-auto flex h-full w-full max-w-[34rem] flex-col rounded-[2rem] border-2 border-brand-green bg-brand-dark p-6 text-white shadow-2xl md:p-10">
+              <h3 className="mb-2 text-xl font-bold md:text-2xl">Plano Corporativo</h3>
+              <p className="mb-5 border-b border-white/10 pb-5 text-sm text-brand-light/80">Para escolas, cursinhos e redes de ensino que querem escalar resultados com acompanhamento inteligente.</p>
+              <div className="mb-6 text-3xl font-extrabold text-brand-green md:text-5xl">Contate-nos</div>
+              <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-light">
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Gestão de turmas e relatórios por desempenho</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Dashboard com métricas pedagógicas em tempo real</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Suporte para implantação institucional</li>
+              </ul>
+              <a
+                href="https://wa.me/?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20plano%20corporativo%20da%20RedaLine."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full rounded-xl bg-brand-green px-4 py-3.5 text-center text-sm font-bold text-brand-dark shadow-lg shadow-brand-green/20 transition-all duration-300 hover:scale-[1.02] hover:bg-emerald-400 hover:shadow-brand-green/40 md:text-base"
+              >
+                Falar no WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -384,7 +503,7 @@ const DemoSection = () => {
   }, [activeScreen]);
 
   return (
-    <section id="demo" className="py-20 md:py-28 px-6 bg-white border-y border-slate-200/80">
+    <section id="demo" className="py-20 md:py-10 px-6 bg-white border-y border-slate-200/80">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-moss/10 text-brand-moss text-xs font-semibold uppercase tracking-[0.18em] mb-4">
@@ -482,7 +601,7 @@ const DemoSection = () => {
 
 const TargetAudience = () => {
   return (
-    <section id="programa" className="py-20 md:py-32 px-6 bg-brand-dark text-white pt-16 md:pt-24 mt-12 md:mt-20">
+    <section id="programa" className="py-20 md:py-20 px-6 bg-brand-dark text-white pt-16 md:pt-18">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Um pouco mais sobre nosso programa</h2>
       </div>
@@ -561,104 +680,9 @@ const CTAStrip = () => {
   );
 }
 
-const Pricing = () => {
-  const [pricingTab, setPricingTab] = useState('students');
-  const isStudentsTab = pricingTab === 'students';
-
-  return (
-    <section id="pricing" className="py-20 md:py-32 px-6 bg-brand-light">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Planos Para Sua Aprovação</h2>
-          <p className="text-brand-gray text-lg max-w-2xl mx-auto">Escolha o plano ideal para acelerar sua preparação. Correção profissional ao seu alcance.</p>
-
-          <div className="mt-8 inline-flex items-center rounded-2xl bg-white p-1.5 border border-gray-200 shadow-sm">
-            <button
-              type="button"
-              onClick={() => setPricingTab('students')}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${isStudentsTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
-            >
-              Estudantes
-            </button>
-            <button
-              type="button"
-              onClick={() => setPricingTab('companies')}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${!isStudentsTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
-            >
-              Empresas
-            </button>
-          </div>
-        </div>
-
-        {isStudentsTab ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto relative z-10">
-            {/* Plano Essencial */}
-            <div className="bg-white rounded-[2rem] p-10 shadow-card border border-gray-100 flex flex-col">
-              <h3 className="text-2xl font-bold text-brand-dark mb-2">Essencial</h3>
-              <p className="text-brand-gray text-sm mb-8 pb-8 border-b border-gray-100">Para estudantes que praticam toda semana.</p>
-              <div className="text-5xl font-extrabold text-brand-dark mb-8">R$ 19<span className="text-xl font-medium text-brand-gray">/mês</span></div>
-              <ul className="space-y-4 text-sm text-brand-gray mb-10 flex-1">
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> <strong>4 correções</strong> por mês</li>
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Análise detalhada de 5 competências</li>
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-moss shrink-0" /> Nota estimada formato ENEM</li>
-                <li className="flex gap-3 items-center opacity-50"><CheckCircle2 className="w-5 h-5 shrink-0" /> Sem limite de acessos ao painel</li>
-              </ul>
-              <button className="w-full py-4 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-blue/30 rounded-xl font-bold">
-                Assinar Essencial
-              </button>
-            </div>
-
-            {/* Plano Intensivo */}
-            <div className="bg-brand-dark text-white rounded-[2rem] p-10 shadow-2xl relative border-2 border-brand-green transform md:-translate-y-4 flex flex-col">
-              <div className="absolute top-0 right-6 -translate-y-1/2 bg-brand-green text-brand-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                Recomendado
-              </div>
-              <h3 className="text-2xl font-bold mb-2">Intensivo</h3>
-              <p className="text-brand-light/70 text-sm mb-8 pb-8 border-b border-white/10">Para a máxima performance na redação.</p>
-              <div className="text-5xl font-extrabold mb-8">R$ 39<span className="text-xl font-medium opacity-70">/mês</span></div>
-              <ul className="space-y-4 text-sm text-brand-light mt-2 mb-10 flex-1">
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> <span className="text-brand-green font-bold">Correções Ilimitadas</span></li>
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Banco de redações Nota 1000</li>
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Gráficos de evolução diária</li>
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Sugestões de reescrita da IA</li>
-              </ul>
-              <button className="w-full py-4 bg-brand-green text-brand-dark hover:bg-emerald-400 transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-green/40 rounded-xl font-bold shadow-lg shadow-brand-green/20">
-                Assinar Intensivo
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="max-w-2xl mx-auto relative z-10">
-            <div className="bg-brand-dark text-white rounded-[2rem] p-10 shadow-2xl border-2 border-brand-green flex flex-col">
-              <h3 className="text-2xl font-bold mb-2">Plano Corporativo</h3>
-              <p className="text-brand-light/80 text-sm mb-8 pb-8 border-b border-white/10">
-                Para escolas, cursinhos e redes de ensino que querem escalar resultados com acompanhamento inteligente.
-              </p>
-              <div className="text-4xl md:text-5xl font-extrabold mb-8 text-brand-green">Contate-nos</div>
-              <ul className="space-y-4 text-sm text-brand-light mt-2 mb-10 flex-1">
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Gestão de turmas e relatórios por desempenho</li>
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Dashboard com métricas pedagógicas em tempo real</li>
-                <li className="flex gap-3 items-center"><CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" /> Suporte para implantação institucional</li>
-              </ul>
-              <a
-                href="https://wa.me/?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20plano%20corporativo%20da%20RedaLine."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-4 bg-brand-green text-brand-dark hover:bg-emerald-400 transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-green/40 rounded-xl font-bold shadow-lg shadow-brand-green/20 text-center"
-              >
-                Falar no WhatsApp
-              </a>
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-};
-
 const Footer = () => {
   return (
-    <footer className="bg-brand-dark text-white pt-20 md:pt-24 pb-10 px-6 mt-[-2rem] md:mt-[-4rem] relative z-0">
+    <footer className="bg-brand-dark text-white pt-20 md:pt-10 pb-10 px-6 mt-[-2rem] md:mt-[-1rem] relative z-0">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 pt-12 md:pt-16">
         <div className="max-w-sm w-full">
           <div className="inline-flex items-center mb-4">
