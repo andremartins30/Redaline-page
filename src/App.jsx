@@ -43,7 +43,7 @@ const studentCards = [
     objectPosition: '48% 18%',
   },
   {
-    src: 'https://ifmt.edu.br/wp-content/uploads/2025/10/capa_arte_intercambio.png__1000x800_q80_subsampling-2_upscale.png',
+    src: '/images/Gemini_Generated_Image_wza8xxwza8xxwza8.png',
     alt: 'Estudante sorrindo com fundo amarelo',
     bg: '#9eff1f',
     height: 'h-[17rem] sm:h-[20rem] lg:h-[22rem]',
@@ -59,7 +59,7 @@ const studentCards = [
     objectPosition: '50% 20%',
   },
   {
-    src: 'https://primeirapagina.com.br/wp-content/uploads/2024/01/estudante-enem.jpg',
+    src: '/images/Gemini_Generated_Image_mbaf26mbaf26mbaf.png',
 
     alt: 'Estudante com livros e fundo rosa',
     bg: '#2b5204',
