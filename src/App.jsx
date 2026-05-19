@@ -705,8 +705,9 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold text-white mb-6">Ajuda</h4>
+            <h4 className="font-bold text-white mb-6">Empresa</h4>
             <ul className="space-y-4 text-sm text-white/80">
+              <li><a href="/quem-somos" className="hover:text-brand-green transition-colors">Quem Somos</a></li>
               <li><a href="mailto:contato@redaline.app" className="hover:text-brand-green transition-colors">Central de Ajuda</a></li>
               <li><a href="/politica-de-privacidade.html" className="hover:text-brand-green transition-colors">Política de Privacidade</a></li>
               <li><a href="mailto:contato@redaline.app?subject=Contato%20Institucional%20RedaLine%20AI" className="hover:text-brand-green transition-colors">Contato Institucional</a></li>
