@@ -104,10 +104,10 @@ const team = [
     name: 'André Martins',
     role: 'CTO & Co-fundador',
     photo: '/team/andre.jpeg',
-    bio: 'Bacharel em Engenharia de Software - UFMT, com experiência em sistemas distribuídos e inteligência artificial. Responsável por toda a arquitetura técnica da RedaLine — do pipeline de correção com IA à infraestrutura escalável que garante análises em menos de 30 segundos para estudantes em todo o Brasil.',
+    bio: 'Bacharel em Engenharia de Software - UFMT, com experiência em sistemas distribuídos e inteligência artificial. Responsável por toda a arquitetura técnica da RedaLine, do pipeline de correção com IA à infraestrutura escalável que garante análises em menos de 30 segundos para estudantes em todo o Brasil.',
     skills: 'Engenharia de Software · Sistemas Distribuídos · Inteligência Artificial · Desenvolvimento Web & Mobile · Arquitetura de APIs',
     linkedin: 'https://www.linkedin.com/in/andremartins30',
-    email: 'andre.martins@redaline.com.br',
+    email: 'andremartins@redaline.com.br',
     location: 'Cuiabá, MT',
     tags: ['Engenharia', 'IA', 'Full Stack'],
   },
@@ -115,7 +115,7 @@ const team = [
     name: 'Alif Maluf',
     role: 'CPO & Co-fundador',
     photo: '/team/alif.png',
-    bio: 'Bacharel em Ciência e Tecnologia pela UFMT, designer de produto e especialista em TI com passagem por projetos de tecnologia educacional em universidades. Na RedaLine, lidera a experiência do produto — garantindo que a interface, os feedbacks e os fluxos pedagógicos sejam intuitivos, eficazes e verdadeiramente úteis para alunos, professores e gestores.',
+    bio: 'Bacharel em Ciência e Tecnologia pela UFMT, designer de produto e especialista em TI com passagem por projetos de tecnologia educacional em universidades. Na RedaLine, lidera a experiência do produto, garantindo que a interface, os feedbacks e os fluxos pedagógicos sejam intuitivos, eficazes e verdadeiramente úteis para alunos, professores e gestores.',
     skills: 'Design de Produto · UX/UI · TI · Tecnologia Educacional',
     linkedin: 'https://www.linkedin.com/in/alifdepaulamaluf/',
     email: 'alifmaluf@redaline.com.br',
@@ -130,7 +130,7 @@ const storyParagraphs = [
   'Com o apoio de professores, instituições de ensino, alunos e parceiros do ecossistema de inovação, o projeto evoluiu para uma solução tecnológica educacional focada em correção inteligente de redações, unindo Inteligência Artificial e metodologia pedagógica humanizada.',
   'Hoje, a Martins Tecnologia atua no desenvolvimento de soluções em Inteligência Artificial aplicada à educação, realizando pesquisas e criando ferramentas que aproximam inovação tecnológica e desenvolvimento pedagógico.',
   'Nosso primeiro produto, a RedaLine, representa o início dessa missão: democratizar o acesso a correções de redação de qualidade, oferecendo feedback detalhado, acompanhamento de evolução e recursos que auxiliam alunos, professores e instituições de ensino a alcançarem melhores resultados.',
-  'Acreditamos que a tecnologia não substitui o educador — ela potencializa o ensino, amplia oportunidades e ajuda a construir uma educação mais acessível, personalizada e eficiente para todos.',
+  'Acreditamos que a tecnologia não substitui o educador, ela potencializa o ensino, amplia oportunidades e ajuda a construir uma educação mais acessível, personalizada e eficiente para todos.',
 ];
 
 const TeamSection = () => {
@@ -419,6 +419,43 @@ export default function QuemSomosPage() {
             >
               Acessar a plataforma
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Parceiros */}
+      <section className="py-16 md:py-20 px-6 bg-white border-t border-slate-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-brand-moss/10 text-brand-moss text-xs font-semibold uppercase tracking-[0.18em]">
+            Parceiros e apoiadores
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-3">Quem acredita nessa missão</h2>
+          <p className="text-brand-gray text-sm md:text-base mb-12 max-w-lg mx-auto">
+            Instituições que apoiam o desenvolvimento da RedaLine e compartilham do nosso compromisso com a educação e a inovação.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-16">
+            <div className="flex flex-col items-center gap-4 group">
+              <div className="h-40 w-72 flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-10 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
+                <img
+                  src="/parceiros/ufmt.png"
+                  alt="UFMT — Universidade Federal de Mato Grosso"
+                  className="max-h-full max-w-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+              <span className="text-brand-gray text-xs font-semibold uppercase tracking-wider">Universidade Federal de Mato Grosso</span>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 group">
+              <div className="h-40 w-72 flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-10 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
+                <img
+                  src="/parceiros/sebrae.png"
+                  alt="Sebrae — Serviço Brasileiro de Apoio às Micro e Pequenas Empresas"
+                  className="max-h-full max-w-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+              <span className="text-brand-gray text-xs font-semibold uppercase tracking-wider">Sebrae</span>
+            </div>
           </div>
         </div>
       </section>
