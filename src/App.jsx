@@ -227,8 +227,8 @@ const Hero = () => {
           </p>
 
           <ul className="space-y-4 mb-10 text-sm md:text-base text-brand-light/90">
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Feedback que explica, orienta e constrói evolução</li>
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Orientação clara baseada nas competências do ENEM</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Análise completa nas 5 competências do ENEM</li>
+            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Nota estimada no formato ENEM em segundos</li>
             <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Feedback que explica o erro e ensina a corrigir</li>
             <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Apontamentos direto no seu texto</li>
             <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Acompanhamento da sua evolução ao longo do tempo</li>
@@ -424,7 +424,7 @@ const Pricing = () => {
             <div className="flex h-full flex-col rounded-[2rem] border border-gray-100 bg-white p-6 shadow-card md:p-8">
               <h3 className="mb-2 text-xl font-bold text-brand-dark md:text-2xl">Essencial</h3>
               <p className="mb-5 border-b border-gray-100 pb-5 text-sm text-brand-gray">Para estudantes que praticam toda semana.</p>
-              <div className="mb-6 text-4xl font-extrabold text-brand-dark md:text-5xl">R$ 19<span className="text-base font-medium text-brand-gray md:text-xl">/mês</span></div>
+              <div className="mb-6 text-4xl font-extrabold text-brand-dark md:text-5xl">R$ 29,90<span className="text-base font-medium text-brand-gray md:text-xl">/mês</span></div>
               <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-gray">
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-moss" /> <strong>4 correções</strong> por mês</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-moss" /> Análise detalhada de 5 competências</li>
@@ -442,7 +442,7 @@ const Pricing = () => {
               </div>
               <h3 className="mb-2 text-xl font-bold md:text-2xl">Intensivo</h3>
               <p className="mb-5 border-b border-white/10 pb-5 text-sm text-brand-light/70">Para a máxima performance na redação.</p>
-              <div className="mb-6 text-4xl font-extrabold md:text-5xl">R$ 39<span className="text-base font-medium opacity-70 md:text-xl">/mês</span></div>
+              <div className="mb-6 text-4xl font-extrabold md:text-5xl">R$ 59,90<span className="text-base font-medium opacity-70 md:text-xl">/mês</span></div>
               <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-light">
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> <span className="font-bold text-brand-green">Correções Ilimitadas</span></li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Banco de redações Nota 1000</li>
