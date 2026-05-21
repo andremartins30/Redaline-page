@@ -425,7 +425,7 @@ export default function QuemSomosPage() {
 
       {/* Parceiros */}
       <section className="py-16 md:py-20 px-6 bg-white border-t border-slate-100">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-brand-moss/10 text-brand-moss text-xs font-semibold uppercase tracking-[0.18em]">
             Parceiros e apoiadores
           </div>
@@ -434,9 +434,9 @@ export default function QuemSomosPage() {
             Instituições que apoiam o desenvolvimento da RedaLine e compartilham do nosso compromisso com a educação e a inovação.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
             <div className="flex flex-col items-center gap-4 group">
-              <div className="h-40 w-72 flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-10 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
+              <div className="h-40 w-full flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-6 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
                 <img
                   src="/parceiros/ufmt.png"
                   alt="UFMT — Universidade Federal de Mato Grosso"
@@ -447,7 +447,7 @@ export default function QuemSomosPage() {
             </div>
 
             <div className="flex flex-col items-center gap-4 group">
-              <div className="h-40 w-72 flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-10 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
+              <div className="h-40 w-full flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-6 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
                 <img
                   src="/parceiros/sebrae.png"
                   alt="Sebrae — Serviço Brasileiro de Apoio às Micro e Pequenas Empresas"
@@ -455,6 +455,28 @@ export default function QuemSomosPage() {
                 />
               </div>
               <span className="text-brand-gray text-xs font-semibold uppercase tracking-wider">Sebrae</span>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 group">
+              <div className="h-40 w-full flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-6 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
+                <img
+                  src="/parceiros/zoho.png"
+                  alt="Zoho for Startups"
+                  className="max-h-full max-w-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+              <span className="text-brand-gray text-xs font-semibold uppercase tracking-wider">Zoho for Startups</span>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 group">
+              <div className="h-40 w-full flex items-center justify-center rounded-2xl bg-brand-light border border-slate-100 px-6 py-6 shadow-card group-hover:shadow-md group-hover:border-brand-green/30 transition-all duration-300">
+                <img
+                  src="/parceiros/google.png"
+                  alt="Google for Startups"
+                  className="max-h-full max-w-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+              <span className="text-brand-gray text-xs font-semibold uppercase tracking-wider">Google for Startups</span>
             </div>
           </div>
         </div>
