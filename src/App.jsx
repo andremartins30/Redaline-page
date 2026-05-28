@@ -391,6 +391,8 @@ const ProposalSection = () => {
 const Pricing = () => {
   const [pricingTab, setPricingTab] = useState('students');
   const isStudentsTab = pricingTab === 'students';
+  const isTeachersTab = pricingTab === 'teachers';
+  const isCompaniesTab = pricingTab === 'companies';
 
   return (
     <section id="pricing" className="px-6 py-16 md:pt-8 bg-brand-light">
@@ -411,10 +413,17 @@ const Pricing = () => {
             </button>
             <button
               type="button"
-              onClick={() => setPricingTab('companies')}
-              className={`flex-1 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:flex-none ${!isStudentsTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
+              onClick={() => setPricingTab('teachers')}
+              className={`flex-1 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:flex-none ${isTeachersTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
             >
-              Empresas
+              Professores
+            </button>
+            <button
+              type="button"
+              onClick={() => setPricingTab('companies')}
+              className={`flex-1 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:flex-none ${isCompaniesTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
+            >
+              Escolas e instituições
             </button>
           </div>
         </div>
@@ -444,13 +453,33 @@ const Pricing = () => {
               <p className="mb-5 border-b border-white/10 pb-5 text-sm text-brand-light/70">Para a máxima performance na redação.</p>
               <div className="mb-6 text-4xl font-extrabold md:text-5xl">R$ 59,90<span className="text-base font-medium opacity-70 md:text-xl">/mês</span></div>
               <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-light">
-                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> <span className="font-bold text-brand-green">Correções Ilimitadas</span></li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> <strong>10 correções</strong> por mês</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Banco de redações Nota 1000</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Gráficos de evolução diária</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Sugestões de reescrita da IA</li>
               </ul>
               <button className="w-full rounded-xl bg-brand-green px-4 py-3.5 text-sm font-bold text-brand-dark shadow-lg shadow-brand-green/20 transition-all duration-300 hover:scale-[1.02] hover:bg-emerald-400 hover:shadow-brand-green/40 md:text-base">
                 Assinar Intensivo
+              </button>
+            </div>
+          </div>
+        ) : isTeachersTab ? (
+          <div className="mx-auto max-w-5xl">
+            <div className="mx-auto flex h-full w-full max-w-[36rem] flex-col rounded-[2rem] border-2 border-brand-blue bg-white p-6 shadow-2xl shadow-brand-blue/10 md:p-10">
+
+              <h3 className="mb-2 text-xl font-bold text-brand-dark md:text-2xl">Plano Professor</h3>
+              <p className="mb-5 border-b border-gray-100 pb-5 text-sm text-brand-gray">Para professores que precisam corrigir mais rápido, acompanhar turmas privadas e acompanhar a evolução dos alunos com clareza.</p>
+              <div className="mb-6 text-4xl font-extrabold text-brand-dark md:text-5xl">R$ 249,90<span className="text-base font-medium text-brand-gray md:text-xl">/mês</span></div>
+              <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-gray">
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> <strong>50 correções</strong> por mês</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> Gestão de turmas privadas</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> Análise de evolução dos alunos</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> Relatórios por turma, aluno e período</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> Feedback pedagógico com apontamentos organizados</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> Suporte para uso individual em sala ou cursinho</li>
+              </ul>
+              <button className="w-full rounded-xl bg-brand-blue px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-blue/20 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-700 hover:shadow-brand-blue/40 md:text-base">
+                Quero o plano Professor
               </button>
             </div>
           </div>
