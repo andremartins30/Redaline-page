@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X, CheckCircle2, Layers, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
+import CheckoutModal from './components/CheckoutModal.jsx';
 
 const heroLinks = [
   { label: 'Proposta', href: '#proposta' },
@@ -388,8 +389,22 @@ const ProposalSection = () => {
   );
 };
 
+const PLANS_CONFIG = {
+  essencial: { id: 'essencial', name: 'Essencial', price: 29.90, credits: 12 },
+  intensivo: { id: 'intensivo', name: 'Intensivo', price: 59.90, credits: 30 },
+  professor: { id: 'professor', name: 'Professor', price: 249.90, credits: 150 },
+};
+
 const Pricing = () => {
   const [pricingTab, setPricingTab] = useState('students');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const openCheckout = (planId) => {
+    setSelectedPlan(PLANS_CONFIG[planId]);
+    setModalOpen(true);
+  };
+
   const isStudentsTab = pricingTab === 'students';
   const isTeachersTab = pricingTab === 'teachers';
   const isCompaniesTab = pricingTab === 'companies';
@@ -440,7 +455,7 @@ const Pricing = () => {
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-moss" /> Nota estimada formato ENEM</li>
                 <li className="flex items-center gap-3 opacity-50"><CheckCircle2 className="h-5 w-5 shrink-0" /> Sem limite de acessos ao painel</li>
               </ul>
-              <button className="w-full rounded-xl border-2 border-brand-blue px-4 py-3.5 text-sm font-bold text-brand-blue transition-all duration-300 hover:-translate-y-1 hover:bg-brand-blue hover:text-white hover:shadow-lg hover:shadow-brand-blue/30 md:text-base">
+              <button onClick={() => openCheckout('essencial')} className="w-full rounded-xl border-2 border-brand-blue px-4 py-3.5 text-sm font-bold text-brand-blue transition-all duration-300 hover:-translate-y-1 hover:bg-brand-blue hover:text-white hover:shadow-lg hover:shadow-brand-blue/30 md:text-base">
                 Assinar Essencial
               </button>
             </div>
@@ -458,7 +473,7 @@ const Pricing = () => {
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Gráficos de evolução diária</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Sugestões de reescrita da IA</li>
               </ul>
-              <button className="w-full rounded-xl bg-brand-green px-4 py-3.5 text-sm font-bold text-brand-dark shadow-lg shadow-brand-green/20 transition-all duration-300 hover:scale-[1.02] hover:bg-emerald-400 hover:shadow-brand-green/40 md:text-base">
+              <button onClick={() => openCheckout('intensivo')} className="w-full rounded-xl bg-brand-green px-4 py-3.5 text-sm font-bold text-brand-dark shadow-lg shadow-brand-green/20 transition-all duration-300 hover:scale-[1.02] hover:bg-emerald-400 hover:shadow-brand-green/40 md:text-base">
                 Assinar Intensivo
               </button>
             </div>
@@ -478,7 +493,7 @@ const Pricing = () => {
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> Feedback pedagógico com apontamentos organizados</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-blue" /> Suporte para uso individual em sala ou cursinho</li>
               </ul>
-              <button className="w-full rounded-xl bg-brand-blue px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-blue/20 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-700 hover:shadow-brand-blue/40 md:text-base">
+              <button onClick={() => openCheckout('professor')} className="w-full rounded-xl bg-brand-blue px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-blue/20 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-700 hover:shadow-brand-blue/40 md:text-base">
                 Quero o plano Professor
               </button>
             </div>
@@ -506,6 +521,11 @@ const Pricing = () => {
           </div>
         )}
       </div>
+        <CheckoutModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          plan={selectedPlan}
+        />
     </section>
   );
 };
