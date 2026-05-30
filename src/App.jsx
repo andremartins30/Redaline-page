@@ -88,19 +88,19 @@ const studentCards = [
 
 const platformScreens = [
   {
-    src: '/new/WhatsApp%20Image%202026-04-16%20at%2000.39.43%20(1).jpeg',
+    src: '/new/painel-do-aluno.jpeg',
     alt: 'Painel do aluno com indicadores de desempenho e evolução',
     title: 'Painel do aluno',
     description: 'Visão completa da evolução, nota, competências e foco da semana em uma interface clara e visual.',
   },
   {
-    src: '/new/WhatsApp%20Image%202026-04-16%20at%2000.39.43%20(2).jpeg',
+    src: '/new/painel-do-professor.jpeg',
     alt: 'Painel do professor com diagnóstico institucional e turmas',
     title: 'Painel do professor',
     description: 'Leitura rápida da instituição, turmas prioritárias, diagnósticos e competências que mais derrubam nota.',
   },
   {
-    src: '/new/WhatsApp%20Image%202026-04-16%20at%2000.39.43%20(3).jpeg',
+    src: '/new/painel-do-gestor.jpeg',
     alt: 'Painel do gestor com visão consolidada institucional',
     title: 'Painel do gestor',
     description: 'Visão consolidada de desempenho, evolução institucional, alertas pedagógicos e ranking de turmas.',
@@ -521,11 +521,11 @@ const Pricing = () => {
           </div>
         )}
       </div>
-        <CheckoutModal
-          isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-          plan={selectedPlan}
-        />
+      <CheckoutModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        plan={selectedPlan}
+      />
     </section>
   );
 };
