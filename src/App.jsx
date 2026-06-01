@@ -469,7 +469,7 @@ const Pricing = () => {
               <div className="mb-6 text-4xl font-extrabold md:text-5xl">R$ 59,90<span className="text-base font-medium opacity-70 md:text-xl">/mês</span></div>
               <ul className="mb-6 flex-1 space-y-3 text-sm text-brand-light">
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> <strong>10 correções</strong> por mês</li>
-                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Banco de redações Nota 1000</li>
+                <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Banco de repertórios e banco de temas para exercício</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Gráficos de evolução diária</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" /> Sugestões de reescrita da IA</li>
               </ul>
