@@ -176,7 +176,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <a href="https://portal.redaline.app/" className="btn-primary text-xs md:text-sm py-2 px-4 md:px-6 hover:!bg-brand-green hover:!text-brand-dark hover:!shadow-brand-green/40">
+          <a href="https://portal.redaline.com.br/" className="btn-primary text-xs md:text-sm py-2 px-4 md:px-6 hover:!bg-brand-green hover:!text-brand-dark hover:!shadow-brand-green/40">
             Acessar<span className="hidden sm:inline">&nbsp;a plataforma</span>
           </a>
 
@@ -236,7 +236,7 @@ const Hero = () => {
           </ul>
 
           <a href="#pricing" className="btn-accent text-lg w-full sm:w-auto">
-            Criar conta gratuita
+            Acesse a plataforma
           </a>
         </div>
 

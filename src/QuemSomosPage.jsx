@@ -50,7 +50,7 @@ const Navbar = () => {
               </a>
             ))}
           </div>
-          <a href="https://portal.redaline.app/" className="btn-primary text-xs md:text-sm py-2 px-4 md:px-6">
+          <a href="https://portal.redaline.com.br/" className="btn-primary text-xs md:text-sm py-2 px-4 md:px-6">
             Acessar<span className="hidden sm:inline">&nbsp;a plataforma</span>
           </a>
           <button className="md:hidden text-white hover:text-brand-green transition-colors" onClick={() => setIsOpen(!isOpen)}>
@@ -346,7 +346,7 @@ export default function QuemSomosPage() {
                 <div className="text-white/70 text-xs font-semibold uppercase tracking-wider">Redações avaliadas</div>
               </div>
               <div className="bg-brand-green rounded-2xl p-5">
-                <div className="text-brand-dark text-2xl font-extrabold mb-1">30s</div>
+                <div className="text-brand-dark text-2xl font-extrabold mb-1">2min</div>
                 <div className="text-brand-dark/70 text-xs font-semibold uppercase tracking-wider">Tempo médio de correção</div>
               </div>
               <div className="bg-brand-light rounded-2xl p-5 border border-slate-200">
@@ -414,7 +414,7 @@ export default function QuemSomosPage() {
               contato@redaline.app
             </a>
             <a
-              href="https://portal.redaline.app/"
+              href="https://portal.redaline.com.br/"
               className="inline-flex items-center gap-2 border-2 border-brand-dark text-brand-dark font-bold py-3.5 px-8 rounded-xl transition-all duration-300 hover:bg-brand-dark hover:text-white text-sm"
             >
               Acessar a plataforma
