@@ -2,7 +2,13 @@
 import { useState } from 'react';
 import { X, Loader2, CheckCircle2 } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// Em produção exige VITE_API_URL configurado; só usa localhost em desenvolvimento
+// para não apontar o checkout silenciosamente para a máquina local em produção.
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3001' : '');
+
+if (!API_URL && import.meta.env.PROD) {
+  console.error('[CheckoutModal] VITE_API_URL não configurado — o checkout não funcionará.');
+}
 
 export default function CheckoutModal({ isOpen, onClose, plan }) {
   const [step, setStep] = useState('email'); // 'email' | 'login' | 'register' | 'redirecting'
@@ -31,6 +37,10 @@ export default function CheckoutModal({ isOpen, onClose, plan }) {
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    if (!API_URL) {
+      setError('Pagamento indisponível no momento. Tente novamente mais tarde.');
+      return;
+    }
     setLoading(true);
     try {
       const res = await fetch(`${API_URL}/api/checkout/check-email`, {
@@ -51,8 +61,11 @@ export default function CheckoutModal({ isOpen, onClose, plan }) {
   const handleLoginAndCheckout = async (e) => {
     e.preventDefault();
     setError('');
+    if (!API_URL) {
+      setError('Pagamento indisponível no momento. Tente novamente mais tarde.');
+      return;
+    }
     setLoading(true);
-    setStep('redirecting');
     try {
       const res = await fetch(`${API_URL}/api/checkout/login-and-checkout`, {
         method: 'POST',
@@ -61,13 +74,12 @@ export default function CheckoutModal({ isOpen, onClose, plan }) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setStep('login');
         setError(data.error || 'Email ou senha incorretos.');
         return;
       }
+      setStep('redirecting');
       window.location.href = data.data.init_point;
     } catch {
-      setStep('login');
       setError('Erro de conexão. Tente novamente.');
     } finally {
       setLoading(false);
@@ -77,8 +89,11 @@ export default function CheckoutModal({ isOpen, onClose, plan }) {
   const handleRegisterAndCheckout = async (e) => {
     e.preventDefault();
     setError('');
+    if (!API_URL) {
+      setError('Pagamento indisponível no momento. Tente novamente mais tarde.');
+      return;
+    }
     setLoading(true);
-    setStep('redirecting');
     try {
       const res = await fetch(`${API_URL}/api/checkout/register-and-checkout`, {
         method: 'POST',
@@ -87,13 +102,12 @@ export default function CheckoutModal({ isOpen, onClose, plan }) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setStep('register');
         setError(data.error || 'Erro ao criar conta. Tente novamente.');
         return;
       }
+      setStep('redirecting');
       window.location.href = data.data.init_point;
     } catch {
-      setStep('register');
       setError('Erro de conexão. Tente novamente.');
     } finally {
       setLoading(false);
