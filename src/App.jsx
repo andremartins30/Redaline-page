@@ -176,8 +176,8 @@ const Navbar = () => {
             ))}
           </div>
 
-          <a href="https://portal.redaline.com.br/" className="btn-primary text-xs md:text-sm py-2 px-4 md:px-6 hover:!bg-brand-green hover:!text-brand-dark hover:!shadow-brand-green/40">
-            Acessar<span className="hidden sm:inline">&nbsp;a plataforma</span>
+          <a href="https://portal.redaline.com.br/cadastro" className="btn-accent text-xs md:text-sm py-2 px-4 md:px-6">
+            Teste grátis
           </a>
 
           <button className="md:hidden text-white hover:text-brand-green transition-colors" onClick={() => setIsOpen(!isOpen)}>
@@ -235,9 +235,14 @@ const Hero = () => {
             <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Acompanhamento da sua evolução ao longo do tempo</li>
           </ul>
 
-          <a href="#pricing" className="btn-accent text-lg w-full sm:w-auto">
-            Acesse a plataforma
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a href="https://portal.redaline.com.br/cadastro" className="btn-accent text-lg w-full sm:w-auto text-center">
+              Faça o seu teste grátis
+            </a>
+            <a href="#pricing" className="btn-primary text-lg w-full sm:w-auto text-center">
+              Ver os planos
+            </a>
+          </div>
         </div>
 
         <div className="relative flex justify-center lg:justify-end lg:self-center">
@@ -295,7 +300,7 @@ const FloatingStatsCard = () => {
             <div className="text-xs font-semibold uppercase opacity-70">Redações<br />Avaliadas</div>
           </div>
           <div className="bg-white/40 p-5 rounded-2xl text-brand-dark min-w-[160px]">
-            <div className="text-3xl font-bold mb-1">30<span className="text-lg">s</span></div>
+            <div className="text-3xl font-bold mb-1">2<span className="text-lg">min</span></div>
             <div className="text-xs font-semibold uppercase opacity-70">Tempo Médio<br />de Correção</div>
           </div>
         </div>
@@ -442,6 +447,23 @@ const Pricing = () => {
             </button>
           </div>
         </div>
+
+        {isStudentsTab ? (
+          <div className="mx-auto max-w-5xl mb-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-[1.5rem] border-2 border-brand-green/60 bg-brand-green/10 px-6 py-5">
+              <div>
+                <p className="font-bold text-brand-dark text-base">Quer experimentar antes de assinar?</p>
+                <p className="text-brand-gray text-sm mt-0.5">Crie sua conta grátis e ganhe <strong>3 correções gratuitas</strong> para testar a plataforma.</p>
+              </div>
+              <a
+                href="https://portal.redaline.com.br/cadastro"
+                className="shrink-0 rounded-xl bg-brand-green px-6 py-3 text-sm font-bold text-brand-dark shadow-md shadow-brand-green/20 transition-all hover:scale-[1.03] hover:bg-emerald-400 whitespace-nowrap"
+              >
+                Faça o seu teste grátis
+              </a>
+            </div>
+          </div>
+        ) : null}
 
         {isStudentsTab ? (
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
