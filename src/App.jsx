@@ -176,6 +176,10 @@ const Navbar = () => {
             ))}
           </div>
 
+          <a href="https://portal.redaline.com.br/login" className="btn-primary hidden md:inline-flex text-xs md:text-sm py-3 px-4 md:px-6">
+            Entrar
+          </a>
+
           <a href="https://portal.redaline.com.br/cadastro" className="btn-accent text-xs md:text-sm py-2 px-4 md:px-6">
             Teste grátis
           </a>
