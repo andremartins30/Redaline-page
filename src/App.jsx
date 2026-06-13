@@ -12,13 +12,13 @@ const heroLinks = [
 const brandSymbolSrc = '/new/Logo_RedaLine-removebg-preview.png';
 
 const BrandLockup = ({ compact = false }) => {
-  const iconSize = compact ? 'h-12 w-12 md:h-11 md:w-11' : 'h-24 w-24 md:h-20 md:w-20';
-  const titleSize = compact ? 'text-lg md:text-xl' : 'text-3xl md:text-[2.15rem]';
-  const subtitleSize = compact ? 'text-[0.55rem] md:text-[0.62rem]' : 'text-[0.62rem] md:text-[0.7rem]';
+  const iconSize = compact ? 'h-10 w-10 md:h-10 md:w-10' : 'h-24 w-24 md:h-20 md:w-20';
+  const titleSize = compact ? 'text-sm md:text-lg' : 'text-3xl md:text-[2.15rem]';
+  const subtitleSize = compact ? 'text-[0.44rem] md:text-[0.58rem]' : 'text-[0.62rem] md:text-[0.7rem]';
 
   return (
-    <span className="inline-flex items-center gap-3 md:gap-4">
-      <span className="grid place-items-center rounded-xl p-2 shadow-sm">
+    <span className="inline-flex items-center gap-2.5 md:gap-4">
+      <span className="grid place-items-center rounded-xl p-1.5 md:p-2 shadow-sm">
         <img src={brandSymbolSrc} alt="Símbolo RedaLine" className={`${iconSize} object-contain`} loading="eager" />
       </span>
 
@@ -155,13 +155,19 @@ const Navbar = () => {
   };
 
   return (
-    <nav id="main-navbar" className="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 py-1.5 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="#topo" aria-label="Voltar ao topo" className="inline-flex items-center">
-          <BrandLockup compact />
-        </a>
+    <nav id="main-navbar" className="fixed top-0 left-0 w-full z-[100] px-4 md:px-6 py-2 md:py-1.5 bg-brand-dark border-b border-white/10 shadow-sm transition-all duration-300">
+      <div className="max-w-7xl mx-auto flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+        <div className="flex items-center justify-between gap-3 w-full md:w-auto">
+          <a href="#topo" aria-label="Voltar ao topo" className="inline-flex items-center shrink-0">
+            <BrandLockup compact />
+          </a>
 
-        <div className="flex items-center gap-4 md:gap-8">
+          <button className="md:hidden inline-flex items-center justify-center text-white hover:text-brand-green transition-colors rounded-xl p-2.5" onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        <div className="hidden md:flex items-center gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-8 text-brand-light font-medium text-sm">
             {heroLinks.map((item) => (
               <a
@@ -180,13 +186,19 @@ const Navbar = () => {
             Entrar
           </a>
 
-          <a href="https://portal.redaline.com.br/cadastro" className="btn-accent text-xs md:text-sm py-2 px-4 md:px-6">
+          <a href="https://portal.redaline.com.br/cadastro" target="_blank" rel="noopener noreferrer" className="btn-accent text-xs md:text-sm py-2 px-4 md:px-6">
             Teste grátis
           </a>
+        </div>
 
-          <button className="md:hidden text-white hover:text-brand-green transition-colors" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+        <div className="grid grid-cols-2 gap-2 w-full md:hidden">
+          <a href="https://portal.redaline.com.br/login" className="btn-primary h-11 text-sm whitespace-nowrap flex items-center justify-center">
+            Entrar
+          </a>
+
+          <a href="https://portal.redaline.com.br/cadastro" target="_blank" rel="noopener noreferrer" className="btn-accent h-11 text-sm whitespace-nowrap flex items-center justify-center">
+            Teste grátis
+          </a>
         </div>
       </div>
 
@@ -209,47 +221,55 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="relative pt-28 pb-28 md:pt-24 md:pb-56 px-6 bg-brand-dark text-white overflow-hidden">
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-moss/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-      <div className="absolute left-0 top-0 w-[680px] h-[680px] bg-brand-green/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <section className="relative pt-20 pb-12 md:pt-24 md:pb-56 px-6 bg-brand-dark text-white overflow-hidden">
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] md:w-[800px] md:h-[800px] bg-brand-moss/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute left-0 top-0 w-[320px] h-[320px] md:w-[680px] md:h-[680px] bg-brand-green/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 items-center relative">
         <div className="max-w-2xl lg:py-1 lg:self-center">
           <Navbar />
 
-          <div className="inline-block px-3 py-1 mt-1 mb-5 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
+          <div className="inline-block px-3 py-1 mt-1 mb-4 rounded-full text-brand-green font-semibold text-xs tracking-[0.2em] border border-brand-green/30 uppercase">
             Tecnologia que Ensina Redação
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.08] mb-5 tracking-tight">
             Sua evolução <br />
             na escrita <br />
             <span className="text-brand-green">começa aqui.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-brand-light/80 mb-8 leading-relaxed font-light max-w-lg">
+          <p className="text-base md:text-xl text-brand-light/80 mb-6 leading-relaxed font-light max-w-lg">
             Envie sua redação e receba em segundos uma análise completa nas 5 competências do ENEM.
           </p>
 
-          <ul className="space-y-4 mb-10 text-sm md:text-base text-brand-light/90">
+          <ul className="space-y-3 mb-8 text-sm md:text-base text-brand-light/90">
             <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Análise completa nas 5 competências do ENEM</li>
             <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Nota estimada no formato ENEM em segundos</li>
             <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Feedback que explica o erro e ensina a corrigir</li>
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Apontamentos direto no seu texto</li>
-            <li className="flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Acompanhamento da sua evolução ao longo do tempo</li>
+            <li className="hidden sm:flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Apontamentos direto no seu texto</li>
+            <li className="hidden sm:flex items-center gap-3"><CheckCircle2 className="text-brand-green w-5 h-5 shrink-0" /> Acompanhamento da sua evolução ao longo do tempo</li>
           </ul>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href="https://portal.redaline.com.br/cadastro" className="btn-accent text-lg w-full sm:w-auto text-center">
+            <a
+              href="https://portal.redaline.com.br/cadastro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-accent text-base sm:text-lg w-full sm:w-auto text-center min-h-[52px] flex items-center justify-center"
+            >
               Faça o seu teste grátis
             </a>
-            <a href="#pricing" className="btn-primary text-lg w-full sm:w-auto text-center">
+            <a
+              href="#pricing"
+              className="btn-primary text-base sm:text-lg w-full sm:w-auto text-center min-h-[52px] flex items-center justify-center"
+            >
               Ver os planos
             </a>
           </div>
         </div>
 
-        <div className="relative flex justify-center lg:justify-end lg:self-center">
+        <div className="hidden md:flex relative justify-center lg:justify-end lg:self-center">
           <div className="relative w-full max-w-[620px]">
             <div className="absolute left-10 top-12 h-7 w-7 rounded-full bg-brand-moss" />
             <div className="absolute right-12 top-0 h-10 w-10 rounded-full bg-brand-green" />
@@ -268,7 +288,7 @@ const Hero = () => {
                     alt={card.alt}
                     className="absolute inset-x-0 bottom-0 top-5 h-[calc(100%-1.25rem)] w-full object-cover"
                     style={{ objectPosition: card.objectPosition }}
-                    loading="eager"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-transparent" />
                   <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/25 to-transparent" />
@@ -284,27 +304,26 @@ const Hero = () => {
 
 const FloatingStatsCard = () => {
   return (
-    <div className="max-w-6xl mx-auto px-6 relative z-20 -mt-16 md:-mt-28 mb-16 md:mb-24">
-      <div className="bg-brand-green rounded-[2rem] p-8 md:p-12 shadow-card flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+    <div className="max-w-6xl mx-auto px-6 relative z-20 mt-4 md:-mt-28 mb-12 md:mb-24">
+      <div className="bg-brand-green rounded-[2rem] p-6 md:p-12 shadow-card flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
         <div className="flex-1">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="bg-brand-dark text-white p-3 rounded-2xl">
-              <Zap className="w-8 h-8 text-brand-green" />
+          <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+            <div className="bg-brand-dark text-white p-2.5 md:p-3 rounded-2xl shrink-0">
+              <Zap className="w-6 h-6 md:w-8 md:h-8 text-brand-green" />
             </div>
-            <h2 className="text-2xl font-bold text-brand-dark">Metodologia que acelera a evolução da sua escrita</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-brand-dark">Metodologia que acelera a evolução da sua escrita</h2>
           </div>
           <p className="text-brand-dark/80 text-sm font-medium leading-relaxed max-w-xl">
-            A RedaLine combina inteligência artificial com uma metodologia de correção de redação desenvolvida por especialistas e validada ao longo de mais de 10 anos de experiência no ENEM.
-            A tecnologia potencializa essa base pedagógica, garantindo orientação consistente, aprofundada e focada na evolução real da escrita.
+            A RedaLine combina inteligência artificial com uma metodologia desenvolvida por especialistas e validada em mais de 10 anos de experiência no ENEM.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row gap-6">
-          <div className="bg-white/40 p-5 rounded-2xl text-brand-dark min-w-[160px]">
-            <div className="text-3xl font-bold mb-1">+1000<span className="text-lg"></span></div>
+        <div className="flex flex-row gap-4 w-full md:w-auto">
+          <div className="bg-white/40 p-4 md:p-5 rounded-2xl text-brand-dark flex-1 md:min-w-[160px]">
+            <div className="text-2xl md:text-3xl font-bold mb-1">+1000</div>
             <div className="text-xs font-semibold uppercase opacity-70">Redações<br />Avaliadas</div>
           </div>
-          <div className="bg-white/40 p-5 rounded-2xl text-brand-dark min-w-[160px]">
-            <div className="text-3xl font-bold mb-1">2<span className="text-lg">min</span></div>
+          <div className="bg-white/40 p-4 md:p-5 rounded-2xl text-brand-dark flex-1 md:min-w-[160px]">
+            <div className="text-2xl md:text-3xl font-bold mb-1">2<span className="text-base md:text-lg">min</span></div>
             <div className="text-xs font-semibold uppercase opacity-70">Tempo Médio<br />de Correção</div>
           </div>
         </div>
@@ -315,46 +334,47 @@ const FloatingStatsCard = () => {
 
 const ProposalSection = () => {
   return (
-    <section id="proposta" className="py-16 md:py-12 px-6">
+    <section id="proposta" className="py-14 md:py-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl md:text-4xl font-light text-brand-dark mb-2">Conheça a nossa proposta para</h2>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-dark">impulsionar a aprendizagem<span className="text-brand-gray font-light block md:inline"> na sua rotina.</span></h3>
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-xl md:text-4xl font-light text-brand-dark mb-2">Conheça a nossa proposta para</h2>
+          <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold text-brand-dark">impulsionar a aprendizagem<span className="text-brand-gray font-light block md:inline"> na sua rotina.</span></h3>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-12">
-            <div className="flex gap-6">
-              <div className="text-brand-moss shrink-0">
-                <LineChart className="w-10 h-10" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="space-y-8 md:space-y-12">
+            <div className="flex gap-4 md:gap-6">
+              <div className="text-brand-moss shrink-0 mt-0.5">
+                <LineChart className="w-8 h-8 md:w-10 md:h-10" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-brand-dark mb-2">Baseada em dados</h4>
+                <h4 className="text-lg md:text-xl font-bold text-brand-dark mb-1.5">Baseada em dados</h4>
                 <p className="text-brand-gray text-sm leading-relaxed">Dados que permitem a personalização do estudo de acordo com necessidades individuais dos estudantes nos 5 critérios de avaliação.</p>
               </div>
             </div>
-            <div className="flex gap-6">
-              <div className="text-brand-moss shrink-0">
-                <Target className="w-10 h-10" />
+            <div className="flex gap-4 md:gap-6">
+              <div className="text-brand-moss shrink-0 mt-0.5">
+                <Target className="w-8 h-8 md:w-10 md:h-10" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-brand-dark mb-2">Alto engajamento dos alunos</h4>
+                <h4 className="text-lg md:text-xl font-bold text-brand-dark mb-1.5">Alto engajamento dos alunos</h4>
                 <p className="text-brand-gray text-sm leading-relaxed">Experiência interativa, rápida e lúdica que abrange revisão de desvios, compreensão textual e evolução de notas ao longo do tempo.</p>
               </div>
             </div>
-            <div className="flex gap-6">
-              <div className="text-brand-moss shrink-0">
-                <Clock className="w-10 h-10" />
+            <div className="flex gap-4 md:gap-6">
+              <div className="text-brand-moss shrink-0 mt-0.5">
+                <Clock className="w-8 h-8 md:w-10 md:h-10" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-brand-dark mb-2">Mais liberdade e tempo</h4>
+                <h4 className="text-lg md:text-xl font-bold text-brand-dark mb-1.5">Mais liberdade e tempo</h4>
                 <p className="text-brand-gray text-sm leading-relaxed">Acompanhamento em tempo real. Menos tempo gasto na espera por correções, mais tempo praticando técnicas de redação.</p>
               </div>
             </div>
-            <a href="#demo" className="btn-primary mt-4">Ver a plataforma</a>
+            <a href="#demo" className="btn-primary inline-flex items-center min-h-[48px]">Ver a plataforma</a>
           </div>
 
-          <div className="relative">
+          {/* Mock browser — visível apenas em telas médias+ */}
+          <div className="relative hidden md:block">
             <div className="bg-brand-gray rounded-t-3xl pt-6 px-6 relative border-b-4 border-brand-dark shadow-2xl overflow-hidden aspect-video flex flex-col">
               <div className="bg-white flex-1 rounded-t-xl overflow-hidden relative border border-brand-gray/20">
                 <div className="h-10 bg-brand-light flex items-center px-4 border-b border-gray-200">
@@ -363,7 +383,7 @@ const ProposalSection = () => {
                   <div className="w-3 h-3 rounded-full bg-green-400"></div>
                 </div>
                 <div className="p-6 bg-white flex h-full gap-6">
-                  <div className="w-1/4 bg-brand-light rounded-lg border border-gray-100 p-4 hidden md:block">
+                  <div className="w-1/4 bg-brand-light rounded-lg border border-gray-100 p-4">
                     <div className="w-full h-2 bg-gray-200 rounded-full mb-3"></div>
                     <div className="w-3/4 h-2 bg-gray-200 rounded-full mb-8"></div>
                     <div className="w-full h-8 bg-brand-moss/10 rounded-md mb-2"></div>
@@ -447,7 +467,8 @@ const Pricing = () => {
               onClick={() => setPricingTab('companies')}
               className={`flex-1 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:flex-none ${isCompaniesTab ? 'bg-brand-dark text-white shadow-md' : 'text-brand-gray hover:text-brand-dark'}`}
             >
-              Escolas e instituições
+              <span className="sm:hidden">Escolas</span>
+              <span className="hidden sm:inline">Escolas e instituições</span>
             </button>
           </div>
         </div>
@@ -457,10 +478,12 @@ const Pricing = () => {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-[1.5rem] border-2 border-brand-green/60 bg-brand-green/10 px-6 py-5">
               <div>
                 <p className="font-bold text-brand-dark text-base">Quer experimentar antes de assinar?</p>
-                <p className="text-brand-gray text-sm mt-0.5">Crie sua conta grátis e ganhe <strong>3 correções gratuitas</strong> para testar a plataforma.</p>
+                <p className="text-brand-gray text-sm mt-0.5">Crie sua conta grátis e ganhe <strong>1 correção gratuita</strong> para testar a plataforma.</p>
               </div>
               <a
                 href="https://portal.redaline.com.br/cadastro"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="shrink-0 rounded-xl bg-brand-green px-6 py-3 text-sm font-bold text-brand-dark shadow-md shadow-brand-green/20 transition-all hover:scale-[1.03] hover:bg-emerald-400 whitespace-nowrap"
               >
                 Faça o seu teste grátis
@@ -578,14 +601,14 @@ const DemoSection = () => {
   }, [activeScreen]);
 
   return (
-    <section id="demo" className="py-20 md:py-10 px-6 bg-white border-y border-slate-200/80">
+    <section id="demo" className="py-12 md:py-20 px-6 bg-white border-y border-slate-200/80">
       <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl mb-12 md:mb-16">
+        <div className="max-w-3xl mb-8 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-moss/10 text-brand-moss text-xs font-semibold uppercase tracking-[0.18em] mb-4">
             Dashboards reais da plataforma
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">Demonstração dos painéis da RedaLine</h2>
-          <p className="text-brand-gray text-base md:text-lg leading-relaxed max-w-2xl">
+          <h2 className="text-2xl md:text-5xl font-bold text-brand-dark mb-3">Demonstração dos painéis da RedaLine</h2>
+          <p className="text-brand-gray text-sm md:text-lg leading-relaxed max-w-2xl">
             Abaixo estão três telas reais dos dashboards da RedaLine, com visões pensadas para aluno, professor e gestor.
           </p>
         </div>
@@ -676,54 +699,54 @@ const DemoSection = () => {
 
 const TargetAudience = () => {
   return (
-    <section id="programa" className="py-20 md:py-20 px-6 bg-brand-dark text-white pt-16 md:pt-18">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Um pouco mais sobre nosso programa</h2>
+    <section id="programa" className="pt-14 pb-20 px-6 bg-brand-dark text-white">
+      <div className="text-center mb-10 md:mb-16">
+        <h2 className="text-2xl md:text-5xl font-bold tracking-tight">Um pouco mais sobre nosso programa</h2>
       </div>
 
-      <div className="max-w-6xl mx-auto space-y-12">
+      <div className="max-w-6xl mx-auto space-y-8 md:space-y-12">
         {/* Card Alunos */}
-        <div className="bg-white text-brand-dark rounded-[2rem] p-8 md:p-12 shadow-xl flex flex-col md:flex-row gap-12 items-center">
-          <div className="flex-1 grid grid-cols-2 gap-4">
+        <div className="bg-white text-brand-dark rounded-[2rem] p-6 md:p-12 shadow-xl flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+          <div className="hidden md:grid flex-1 grid-cols-2 gap-4">
             <div className="bg-brand-moss/10 rounded-3xl aspect-square flex items-center justify-center p-6"><BookOpen className="w-full h-full text-brand-moss opacity-80" /></div>
             <div className="bg-brand-green/20 rounded-3xl aspect-square flex items-center justify-center p-6"><PenTool className="w-full h-full text-brand-green opacity-80" /></div>
             <div className="col-span-2 relative h-40 rounded-3xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Aluno estudando" />
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Aluno estudando" loading="lazy" />
             </div>
           </div>
           <div className="flex-[1.5]">
-            <div className="flex items-center gap-3 mb-8">
-              <Users className="text-brand-moss w-8 h-8" />
-              <h3 className="text-3xl font-bold">Alunos</h3>
+            <div className="flex items-center gap-3 mb-5 md:mb-8">
+              <Users className="text-brand-moss w-7 h-7 md:w-8 md:h-8 shrink-0" />
+              <h3 className="text-2xl md:text-3xl font-bold">Alunos</h3>
             </div>
-            <ul className="space-y-5 text-sm">
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span><strong>Devolutivas imediatas</strong> por meio de inteligência artificial de alta precisão.</span></li>
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span><strong>Comentários e notas</strong> atribuídos por competência e texto em geral, simulando o ENEM.</span></li>
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span><strong>Repertório atualizado</strong> de acordo com interesses e os temas mais pedidos nos vestibulares.</span></li>
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span><strong>Verificação inteligente</strong> - Redação zerada automaticamente em casos de fuga ao tema.</span></li>
+            <ul className="space-y-4 md:space-y-5 text-sm">
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span><strong>Devolutivas imediatas</strong> por meio de inteligência artificial de alta precisão.</span></li>
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span><strong>Comentários e notas</strong> atribuídos por competência e texto em geral, simulando o ENEM.</span></li>
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span><strong>Repertório atualizado</strong> de acordo com interesses e os temas mais pedidos nos vestibulares.</span></li>
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span><strong>Verificação inteligente</strong> — redação zerada automaticamente em casos de fuga ao tema.</span></li>
             </ul>
-            <a href="#pricing" className="btn-primary mt-8">Ver os planos</a>
+            <a href="#pricing" className="btn-primary mt-6 md:mt-8 inline-flex items-center min-h-[48px]">Ver os planos</a>
           </div>
         </div>
 
         {/* Card Professores e Gestores */}
-        <div className="bg-white text-brand-dark rounded-[2rem] p-8 md:p-12 shadow-xl flex flex-col md:flex-row gap-12 items-center">
-          <div className="flex-[1.5] order-2 md:order-1">
-            <div className="flex items-center gap-3 mb-8">
-              <Building2 className="text-brand-moss w-8 h-8" />
-              <h3 className="text-3xl font-bold">Professores e Escolas</h3>
+        <div className="bg-white text-brand-dark rounded-[2rem] p-6 md:p-12 shadow-xl flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+          <div className="flex-[1.5] order-1 md:order-1">
+            <div className="flex items-center gap-3 mb-5 md:mb-8">
+              <Building2 className="text-brand-moss w-7 h-7 md:w-8 md:h-8 shrink-0" />
+              <h3 className="text-2xl md:text-3xl font-bold">Professores e Escolas</h3>
             </div>
-            <ul className="space-y-5 text-sm">
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span>Relatórios com <strong>dados de desempenho da turma</strong> em tempo real.</span></li>
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span>Análise de engajamento por turma e por estudante individualmente.</span></li>
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span>Apontamento das oportunidades de <strong>evolução dos estudantes</strong>.</span></li>
-              <li className="flex gap-4 items-start"><CheckCircle2 className="w-6 h-6 shrink-0 text-brand-dark" /> <span><strong>Autonomia</strong> para complementar as devolutivas e notas oferecidas pela IA.</span></li>
+            <ul className="space-y-4 md:space-y-5 text-sm">
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span>Relatórios com <strong>dados de desempenho da turma</strong> em tempo real.</span></li>
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span>Análise de engajamento por turma e por estudante individualmente.</span></li>
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span>Apontamento das oportunidades de <strong>evolução dos estudantes</strong>.</span></li>
+              <li className="flex gap-3 md:gap-4 items-start"><CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 shrink-0 text-brand-dark mt-0.5" /> <span><strong>Autonomia</strong> para complementar as devolutivas e notas oferecidas pela IA.</span></li>
             </ul>
-            <a href="#pricing" className="btn-primary mt-8">Falar com consultor</a>
+            <a href="#pricing" className="btn-primary mt-6 md:mt-8 inline-flex items-center min-h-[48px]">Falar com consultor</a>
           </div>
-          <div className="flex-1 grid grid-cols-2 gap-4 order-1 md:order-2">
+          <div className="hidden md:grid flex-1 grid-cols-2 gap-4 order-2">
             <div className="col-span-2 relative h-40 rounded-3xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Professor" />
+              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Professor" loading="lazy" />
             </div>
             <div className="bg-brand-moss/10 rounded-3xl aspect-square flex items-center justify-center p-6"><BarChart3 className="w-full h-full text-brand-moss opacity-80" /></div>
             <div className="bg-brand-dark/10 rounded-3xl aspect-square flex items-center justify-center p-6"><Layers className="w-full h-full text-brand-dark opacity-80" /></div>
@@ -736,18 +759,18 @@ const TargetAudience = () => {
 
 const CTAStrip = () => {
   return (
-    <div className="bg-brand-dark text-white py-12 px-6 border-b border-brand-moss/30">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-        <div className="flex items-center gap-6">
-          <div className="w-24 h-24 rounded-2xl bg-white/10 hidden md:flex items-center justify-center shrink-0">
-            <Building2 className="w-12 h-12 text-brand-green" />
+    <div className="bg-brand-dark text-white py-10 md:py-12 px-6 border-b border-brand-moss/30">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+          <div className="w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
+            <Building2 className="w-8 h-8 md:w-12 md:h-12 text-brand-green" />
           </div>
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-2">Você é gestor de uma rede?</h3>
-            <p className="text-white/90">Conheça o programa na prática e veja todos os benefícios que a IA educacional pode oferecer para sua escola.</p>
+            <h3 className="text-xl md:text-3xl font-bold mb-1.5">Você é gestor de uma rede?</h3>
+            <p className="text-white/80 text-sm md:text-base">Conheça o programa na prática e veja todos os benefícios que a IA educacional pode oferecer para sua escola.</p>
           </div>
         </div>
-        <a href="#demo" className="btn-accent whitespace-nowrap">
+        <a href="#demo" className="btn-accent whitespace-nowrap min-h-[48px] flex items-center">
           Ver demonstração
         </a>
       </div>
@@ -757,7 +780,7 @@ const CTAStrip = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-dark text-white pt-20 md:pt-10 pb-10 px-6 mt-[-2rem] md:mt-[-1rem] relative z-0">
+    <footer className="bg-brand-dark text-white pt-10 md:pt-20 pb-10 px-6 relative z-0">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 pt-12 md:pt-16">
         <div className="max-w-sm w-full">
           <div className="inline-flex items-center mb-4">
