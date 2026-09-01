@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, X, CheckCircle2, Layers, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3 } from 'lucide-react';
+import { Menu, X, CheckCircle2, Layers, LineChart, Target, Zap, Clock, BookOpen, Users, Building2, PenTool, BarChart3, Sparkles } from 'lucide-react';
 import CheckoutModal from './components/CheckoutModal.jsx';
+import PublicCorrectionSection from './components/PublicCorrectionSection.jsx';
 
 const heroLinks = [
+  { label: 'Correção Grátis', href: '#correcao-gratis' },
   { label: 'Proposta', href: '#proposta' },
   { label: 'Demonstração', href: '#demo' },
   { label: 'O Programa', href: '#programa' },
@@ -834,6 +836,7 @@ export default function App() {
       <Hero />
       <FloatingStatsCard />
       <ProposalSection />
+      <PublicCorrectionSection />
       <DemoSection />
       <TargetAudience />
       <CTAStrip />
