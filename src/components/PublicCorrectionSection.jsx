@@ -401,7 +401,7 @@ export default function PublicCorrectionSection() {
           </h2>
 
           <p className="text-brand-light/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-light">
-            Receba em segundos uma análise completa nas 5 competências do ENEM pela IA da RedaLine. Sem necessidade de cartão ou cadastro prévio.
+            Receba em segundos uma análise completa nas 5 competências do ENEM pela Metodologia RedaLine. Sem necessidade de cartão ou cadastro prévio.
           </p>
 
           {/* Destaques curtos de benefícios em cards translúcidos */}
@@ -439,7 +439,7 @@ export default function PublicCorrectionSection() {
                 className="btn-accent py-4 px-8 text-base sm:text-lg font-extrabold shadow-lg shadow-brand-green/20 hover:shadow-brand-green/40 hover:scale-105 transition flex items-center justify-center gap-3 rounded-2xl mx-auto w-full sm:w-auto"
               >
                 <Sparkles className="w-5 h-5 text-brand-dark" />
-                Corrija sua redação aqui
+                Corrija sua redação aqui! (sem compromisso)
                 <ChevronDown className="w-5 h-5 text-brand-dark" />
               </button>
               <p className="text-xs text-white/60 mt-3 font-light">
